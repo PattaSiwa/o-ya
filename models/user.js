@@ -6,7 +6,7 @@ const userSchema = new Schema({
         type: String,
         require: true,
         unique: true,
-        maxLength: [20, 'name cannot be more than 20 characters']
+        maxlength: [20, 'name cannot be more than 20 characters']
     },
     password: String
 })

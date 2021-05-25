@@ -6,7 +6,7 @@ const expenseSchema = new Schema({
         type: String,
         required: [true, 'Please add a title'],
         unique: true,
-        maxLength: [40, 'name cannot be more than 40 characters']
+        maxlength: [40, 'name cannot be more than 40 characters']
     },
     description: { type: String },
     amount: {
