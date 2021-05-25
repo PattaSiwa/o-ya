@@ -24,6 +24,5 @@ const expenseSchema = new Schema({
     }
 })
 
-const Group = model('Group', expenseSchema)
 
-module.exports = Group
+module.exports = mongoose.models.Expense || model('Expense', expenseSchema)
