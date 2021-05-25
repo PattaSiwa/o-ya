@@ -1,5 +1,9 @@
-export default function Login() {
+import classes from './login.module.css'
+
+export default function LoginPage() {
     return (
-        <h1> This is the login page</h1>
+        <div className={classes.login}>
+            <h1 className={classes.logintext}> This is the login page</h1>
+        </div>
     )
 }

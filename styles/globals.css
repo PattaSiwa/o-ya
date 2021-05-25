@@ -14,3 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --primary: #0a0b0d;
+  --secondary:#1B1F26;
+  --accent: #3B4B59;
+  --light: #dce5eb;
+  --shadow: #6D7E8C;
+
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+

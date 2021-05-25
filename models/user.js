@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
 const userSchema = new Schema({
-    username: {
+    email: {
         type: String,
         require: true,
         unique: true,
-        maxlength: [20, 'name cannot be more than 20 characters']
+        maxlength: [40, 'name cannot be more than 40 characters']
     },
     password: String
 })
