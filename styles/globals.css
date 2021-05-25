@@ -3,7 +3,11 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: #F2D0BD;
+  background: -moz-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
+  background: -webkit-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
+  background: linear-gradient(to bottom, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
 }
 
 a {
@@ -16,11 +20,11 @@ a {
 }
 
 :root {
-  --primary: #0a0b0d;
-  --secondary:#1B1F26;
-  --accent: #3B4B59;
-  --light: #dce5eb;
-  --shadow: #6D7E8C;
+  --primary: #F29C94;
+  --secondary:#F27777;
+  --accent: #40282E;
+  --light: #5C736C;
+  --shadow: #F2D0BD;
 
 }
 

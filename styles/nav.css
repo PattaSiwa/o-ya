@@ -1,5 +1,5 @@
 header{
-    background:var(--primary);
+    background:var(--light);
     text-align: right;
     position: fixed;
     z-index: 100;
@@ -17,7 +17,7 @@ nav {
     text-align: left;
     top: 100%;
     left: 0;
-    background: var(--primary);
+    background: var(--light);
     width: 100%;
     transform: scale(1,0);
     transform-origin: top;
@@ -37,19 +37,19 @@ nav li {
 }
 
 nav a {
-    color: var(--light);
-    font-size: 1.2rem;
+    color: var(--accent);
+    font-size: 1em;
     text-transform: uppercase;
     text-decoration: none;
     opacity: 0;
-    
+   
     transition: opacity .2s ease-in-out;
     transition: .3s;
    
 }
 
 nav a:hover {
-    color: var(--accent);
+    color: var(--primary);
 }
 
 
@@ -67,7 +67,7 @@ nav a:hover {
 }
 
 .nav-tog-label {
-    color: var(--light);
+    color: var(--primary);
     position: absolute;
     top:0;
     left:0;
@@ -78,7 +78,7 @@ nav a:hover {
 }
 .nav-tog-label span, .nav-tog-label span::before, .nav-tog-label span::after{
 display: block;
-background: var(--light);
+background: var(--primary);
 height:2px;
 width: 2.2em;
 border-radius: 2px;
@@ -153,9 +153,10 @@ position: relative;
         content: '';
         display:block;
         height: 5px;
-        background: var(--accent);
+        background: var(--primary);
         position: absolute;
         bottom: -.2em;
+        transform-origin: left;
         left: 0;
         right: 0;
         transform: scale(0,1);

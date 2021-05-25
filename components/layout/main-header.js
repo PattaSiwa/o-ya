@@ -1,13 +1,15 @@
 import Link from 'next/link'
 import { Fragment } from 'react'
 import classses from './main-header.module.css'
+import Image from 'next/image'
 
 function MainHeader() {
     return (
         <Fragment>
             <header>
-                <div className="logo-a">
-                    <Link href="/"><a className={classses.logo}>OYA</a></Link>
+                <div className={classses.logoA}>
+                    <Link href="/"><Image src="/oya-icons/logo_transparent2.png" className={classses.logo} width={50} height={50} />
+                    </Link>
                 </div>
 
                 <input type="checkbox" className="nav-tog" id="nav-tog"></input>

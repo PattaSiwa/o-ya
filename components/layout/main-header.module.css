@@ -1,4 +1,34 @@
 .logo {
-    color: var(--light);
-    font-size: 3em;
+  width: 3rem;
+  height: 3rem;
+  transition: 1s
+}
+
+.logo:hover {
+    cursor: pointer;
+    transform: rotate(360deg);
+}
+
+.logoA {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+    width: 40%;
+    height: auto;
+}
+
+
+@media screen and (max-width:800px) {
+    .logoA{
+        margin: auto;
+        position: relative;
+        right: -140px;
+        width: 20%;
+    }
+
+    .logo {
+        text-align: center;
+        margin: auto;
+    }
+    
 }
