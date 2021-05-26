@@ -14,13 +14,15 @@
 }
 
 .mainLogo{
-    filter: drop-shadow(20px 10px 4px rgba(90, 68, 28, 0.507));
+    filter: drop-shadow(20px 10px 4px rgba(44, 37, 22, 0.705));
 }
 
 .slogan h3 {
-    color: rgb(202, 132, 3);
-    font-size: 2em;
-    text-shadow: 2px 2px 2px #4b4232;
+    color: var(--secondary);
+    font-size: 3em;
+    text-shadow: 3px 3px 3px #4b4232;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 3px;
 }
 
 .landing {
@@ -34,6 +36,24 @@
     z-index: 1;
 }
 
+.getstarted {
+    border: none;
+    background-color: var(--secondary);
+    color: var(--primary);
+    font-family: 'Oleo Script', cursive;
+    padding: .5rem 1rem;
+    font-size: 1.5em;
+    border-radius: 30px;
+    box-shadow: 3px 3px 3px #4b4232;
+    transition: .5s;
+}
+
+.getstarted:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--shadow)
+}
+
 .backgroundvid {
     position:absolute;
     top:0;
@@ -42,7 +62,7 @@
     min-height: 100%;
     max-height: 100vh;
     object-fit: cover;
-    
+    opacity: .7;
 
 }
 
@@ -54,5 +74,16 @@
 
     .slogan h3 {
         font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width:700px){
+    .mainLogo{
+        width: 60%;
+        height: auto;
+    }
+
+    .slogan h3 {
+        font-size: 1.7em;
     }
 }

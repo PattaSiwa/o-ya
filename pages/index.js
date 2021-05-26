@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import classes from './index.module.css'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -18,9 +19,9 @@ export default function Home() {
         <img className={classes.mainLogo} src='/oya-icons/logo_transparent.png' width={400} height={400} />
         <div className={classes.slogan}>
           <h3>Shared Expenses Made Simple</h3>
-          <h3>
-          </h3>
         </div>
+
+        <Link href="/signup"><button className={classes.getstarted}>Get Started</button></Link>
       </div>
 
 

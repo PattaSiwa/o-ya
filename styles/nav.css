@@ -4,6 +4,7 @@ header{
     position: fixed;
     z-index: 100;
     width: 100%;
+    opacity: .8;
 }
 .logo-top {
     width: 40px;
@@ -37,12 +38,12 @@ nav li {
 }
 
 nav a {
-    color: var(--accent);
-    font-size: 1em;
+    color: var(--secondary);
+    font-size: 1.2em;
     text-transform: uppercase;
     text-decoration: none;
     opacity: 0;
-   
+    font-family: 'Oleo Script', cursive;
     transition: opacity .2s ease-in-out;
     transition: .3s;
    

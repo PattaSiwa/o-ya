@@ -1,0 +1,41 @@
+.footer {
+    min-height: 20vh;
+    background-color: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 30%;
+}
+
+.logo {
+    width: 10%;
+    min-width: 100px;
+}
+
+.footer h3 {
+    font-family: 'Oleo Script', cursive;
+    color: black;
+    opacity: .5;
+    letter-spacing: 1px;
+}
+
+.copyright {
+    text-align: center;
+}
+
+.socialicon {
+    width: 50px;
+    margin: 1rem;
+    opacity: .5;
+    transition: .3s;
+}
+
+.socialicon:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width:700px){
+    .footer{
+        flex-direction: column;
+    }
+}

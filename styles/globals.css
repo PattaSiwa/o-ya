@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oleo+Script&display=swap');
+
 html,
 body {
   padding: 0;
@@ -20,11 +22,11 @@ a {
 }
 
 :root {
-  --primary: #F29C94;
-  --secondary:#F27777;
-  --accent: #40282E;
-  --light: #5C736C;
-  --shadow: #F2D0BD;
+  --primary: #8C3503;
+  --secondary:#E6922F;
+  --accent: #BF8969;
+  --light: #5D7D66;
+  --shadow: #DEC3AE;
 
 }
 

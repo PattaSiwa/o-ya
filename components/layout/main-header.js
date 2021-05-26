@@ -20,7 +20,7 @@ function MainHeader() {
                 <nav>
                     <ul>
                         <li><Link href="/signup">Sign Up</Link></li>
-                        <li><Link href="/login">Log In</Link></li>
+                        <li><Link href="/login">Login</Link></li>
 
                     </ul>
                 </nav>
