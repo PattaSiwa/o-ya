@@ -12,6 +12,14 @@
     color: var(--primary)
 }
 
+.signupStatus{
+    display: block;
+    font-size: .7em;
+    color: var(--primary);
+    text-align: center;
+}
+
+
 .title {
     font-family: 'Lobster', cursive;
     margin-top: .3rem;

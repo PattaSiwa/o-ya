@@ -26,6 +26,8 @@ function SignUpForm() {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
+    const [signupStatus, setSignupStatus] = useState('');
+
     const router = useRouter();
 
 
@@ -39,6 +41,8 @@ function SignUpForm() {
             const result = await createUser(enteredEmail, enteredPassword);
             console.log(result);
         } catch (error) {
+            setSignupStatus(error.message)
+            console.log(signupStatus)
             console.log(error);
         }
 
@@ -65,6 +69,9 @@ function SignUpForm() {
                     ref={passwordInputRef}
                     placeholder="password"
                 />
+            </div>
+            <div>
+                <p className={classes.signupStatus}>{signupStatus}</p>
             </div>
             <div className={classes.actions}>
                 <button>Create Account</button>

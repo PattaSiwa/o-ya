@@ -18,7 +18,7 @@ export default NextAuth({
 
                 if (!user) {
 
-                    throw new Error('No user found!')
+                    throw new Error('Email or Password incorrect')
                 }
 
                 const isValid = await verifyPassword(credentials.password, user.password)
