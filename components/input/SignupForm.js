@@ -1,11 +1,10 @@
 import classes from './SignupForm.module.css'
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
-import { signIn } from 'next-auth/client';
 import Link from 'next/link'
 
 async function createUser(email, password) {
-    const response = await fetch('/api/users', {
+    const response = await fetch('/api/auth/signup', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: {
@@ -27,7 +26,6 @@ function SignUpForm() {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
-
     const router = useRouter();
 
 
@@ -37,31 +35,18 @@ function SignUpForm() {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
-        // optional: Add validation
-
-        if (isLogin) {
-            const result = await signIn('credentials', {
-                redirect: false,
-                email: enteredEmail,
-                password: enteredPassword,
-            });
-
-            if (!result.error) {
-                // set some auth state
-                router.replace('/profile');
-            }
-        } else {
-            try {
-                const result = await createUser(enteredEmail, enteredPassword);
-                console.log(result);
-            } catch (error) {
-                console.log(error);
-            }
+        try {
+            const result = await createUser(enteredEmail, enteredPassword);
+            console.log(result);
+        } catch (error) {
+            console.log(error);
         }
+
     }
 
     return (
         <form className={classes.form} onSubmit={submitHandler}>
+            <h2 className={classes.title}>Sign Up</h2>
             <div className={classes.input}>
                 <label htmlFor='email'>Your Email</label>
                 <input
@@ -83,10 +68,10 @@ function SignUpForm() {
             </div>
             <div className={classes.actions}>
                 <button>Create Account</button>
-                <Link href='/login'>
-                    <a className={classes.signupLink}>Login with existing account here</a>
-                </Link>
             </div>
+            <Link href='/login'>
+                <a className={classes.signupLink}>Login with existing account here</a>
+            </Link>
         </form>
     )
 }

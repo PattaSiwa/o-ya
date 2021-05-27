@@ -1,29 +1,12 @@
-import classes from './Login.module.css'
+import classes from './LoginForm.module.css'
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/client';
 import Link from 'next/link'
 
-async function createUser(email, password) {
-    const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong!');
-    }
-
-    return data;
-}
 
 
-function LoginForm() {
+export default function LoginForm() {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
@@ -37,31 +20,23 @@ function LoginForm() {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
-        // optional: Add validation
+        const result = await signIn('credentials', {
+            redirect: false,
+            email: enteredEmail,
+            password: enteredPassword,
+        });
 
-        if (isLogin) {
-            const result = await signIn('credentials', {
-                redirect: false,
-                email: enteredEmail,
-                password: enteredPassword,
-            });
-
-            if (!result.error) {
-                // set some auth state
-                router.replace('/profile');
-            }
-        } else {
-            try {
-                const result = await createUser(enteredEmail, enteredPassword);
-                console.log(result);
-            } catch (error) {
-                console.log(error);
-            }
+        if (!result.error) {
+            // set some auth state
+            router.replace('/dashboard');
         }
-    }
 
+        console.log(result)
+
+    }
     return (
         <form className={classes.form} onSubmit={submitHandler}>
+            <h2 className={classes.title}>Login</h2>
             <div className={classes.input}>
                 <label htmlFor='email'>Your Email</label>
                 <input
@@ -90,5 +65,3 @@ function LoginForm() {
         </form>
     )
 }
-
-export default LoginForm

@@ -1,6 +1,6 @@
 import dbConnect from '../../../utils/dbConnect'
 import User from '../../../models/user'
-import { hashPassword } from '../../../utils/hashPassword';
+import { hashPassword } from '../../../utils/password';
 
 dbConnect()
 
@@ -9,9 +9,17 @@ export default async (req, res) => {
 
     const { email, password } = req.body
 
+    console.log(email, password)
 
-    if (!email || !email.includes('@') || !password || password.trim().length < 7) {
-        res.status(422).json({ message: "Invalid input - email must include @ or password must be at least 7 characters long" })
+    if (!email || !email.includes('@') || !password || password.trim().length < 5) {
+        res.status(422).json({ message: "Invalid input - email must include @ or password must be at least 5 characters long" })
+        return
+    }
+
+    const existingUser = await User.findOne({ email: email })
+
+    if (existingUser) {
+        res.status(422).json({ message: "Email already in used" })
         return
     }
 

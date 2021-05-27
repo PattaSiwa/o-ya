@@ -12,6 +12,12 @@
     color: var(--primary)
 }
 
+.title {
+    font-family: 'Lobster', cursive;
+    margin-top: .3rem;
+    color: var(--primary)
+}
+
 .input input {
     font-family: 'Roboto', sans-serif;
     width: 100%;
