@@ -4,7 +4,7 @@ const { Schema, model } = mongoose
 const userSchema = new Schema({
     email: {
         type: String,
-        require: true,
+        required: true,
         unique: true,
         maxlength: [40, 'name cannot be more than 40 characters']
     },
