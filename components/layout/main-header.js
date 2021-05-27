@@ -8,12 +8,12 @@ function MainHeader() {
         <Fragment>
             <header>
                 <div className={classses.logoA}>
-                    <Link href="/"><Image src="/oya-icons/logo_transparent2.png" className={classses.logo} width={50} height={50} />
+                    <Link href="/"><Image alt="oya logo" src="/oya-icons/logo_transparent2.png" className={classses.logo} width={50} height={50} />
                     </Link>
                 </div>
 
                 <input type="checkbox" className="nav-tog" id="nav-tog"></input>
-                <label for="nav-tog" className="nav-tog-label">
+                <label htmlFor="nav-tog" className="nav-tog-label">
                     <span></span>
 
                 </label>

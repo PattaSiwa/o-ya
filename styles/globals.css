@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oleo+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+html {
+  scroll-behavior: smooth;
+}
 
 html,
 body {
