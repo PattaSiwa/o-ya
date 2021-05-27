@@ -6,9 +6,11 @@ import Link from 'next/link'
 
 
 
-export default function LoginForm() {
+export default function LoginForm(props) {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
+
+    const [loginStatus, setLoginStatus] = useState('');
 
 
     const router = useRouter();
@@ -27,11 +29,12 @@ export default function LoginForm() {
         });
 
         if (!result.error) {
-            // set some auth state
+            console.log(result)
             router.replace('/dashboard');
         }
-
+        setLoginStatus(result.error)
         console.log(result)
+        console.log(loginStatus)
 
     }
     return (
@@ -55,6 +58,9 @@ export default function LoginForm() {
                     ref={passwordInputRef}
                     placeholder="password"
                 />
+            </div>
+            <div>
+                <p className={classes.loginStatus}>{loginStatus}</p>
             </div>
             <div className={classes.actions}>
                 <button>Login</button>
