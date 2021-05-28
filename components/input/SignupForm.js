@@ -25,6 +25,7 @@ async function createUser(email, password) {
 function SignUpForm() {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
+    const reenterPasswordInputRef = useRef();
 
     const [signupStatus, setSignupStatus] = useState('');
 
@@ -36,6 +37,12 @@ function SignUpForm() {
 
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
+        const reenteredPassword = reenterPasswordInputRef.current.value;
+
+        if (enteredPassword !== reenteredPassword) {
+            setSignupStatus('Passwords do not match, please re-enter password')
+            return;
+        }
 
         try {
             const result = await createUser(enteredEmail, enteredPassword);
@@ -61,13 +68,22 @@ function SignUpForm() {
                 />
             </div>
             <div className={classes.input}>
-                <label htmlFor='password'>Your Password</label>
+                <label >Your Password</label>
+                <input
+                    type='password'
+                    required
+                    ref={passwordInputRef}
+                    placeholder="password"
+                />
+            </div>
+            <div className={classes.input}>
+                <label htmlFor='password'>Re-enter Password</label>
                 <input
                     type='password'
                     id='password'
                     required
-                    ref={passwordInputRef}
-                    placeholder="password"
+                    ref={reenterPasswordInputRef}
+                    placeholder="re-enter password"
                 />
             </div>
             <div>

@@ -9,8 +9,6 @@ export default async (req, res) => {
 
     const { email, password } = req.body
 
-    console.log(email, password)
-
     if (!email || !email.includes('@') || !password || password.trim().length < 5) {
         res.status(422).json({ message: "Invalid input - email must include @ or password must be at least 5 characters long" })
         return
