@@ -1,6 +1,7 @@
 import classes from './SignupForm.module.css'
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/client';
 import Link from 'next/link'
 
 async function createUser(email, password) {
@@ -46,7 +47,17 @@ function SignUpForm() {
 
         try {
             const result = await createUser(enteredEmail, enteredPassword);
-            console.log(result);
+            const signInResult = await signIn('credentials', {
+                redirect: false,
+                email: enteredEmail,
+                password: enteredPassword,
+            });
+
+            if (!signInResult.error) {
+
+                router.replace('/dashboard');
+            }
+            setLoginStatus(result.error)
         } catch (error) {
             setSignupStatus(error.message)
             console.log(signupStatus)

@@ -27,8 +27,7 @@
     padding: .2rem .6rem;
     font-family: 'Oleo Script', cursive;
     transition: .6s;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+   
 }
 
 .logoutBtn:hover {
@@ -36,6 +35,24 @@
     color:var(--secondary);
     cursor: pointer;
 } 
+
+.logoutBtn::before {
+    content: '';
+    display:block;
+    height: 5px;
+    background: var(--primary);
+    position: absolute;
+    bottom: -.2em;
+    transform-origin: middle;
+    left: 0;
+    right: 0;
+    transform: scale(0,1);
+    transition: transform ease-in-out .4s
+}
+
+.logoutBtn:hover::before {
+    transform: scale(1,1)
+}
 
 
 
@@ -51,5 +68,18 @@
         text-align: center;
         margin: auto;
     }
+
+    .logoutBtn{
+        background-color: var(--light);
+        margin-top: .5rem;
+        padding: 0;
+    }
+
+    .logoutBtn:hover {
+        background-color: var(--light);
+        color:var(--secondary);
+        cursor: pointer;
+    } 
+    
     
 }

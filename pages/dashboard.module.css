@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.loading {
+    font-family: 'Oleo Script', cursive;
+    color: var(--primary);
+    font-size: 3em;
+}

@@ -29,12 +29,11 @@ export default function LoginForm(props) {
         });
 
         if (!result.error) {
-            console.log(result)
+
             router.replace('/dashboard');
         }
         setLoginStatus(result.error)
-        console.log(result)
-        console.log(loginStatus)
+
 
     }
     return (
