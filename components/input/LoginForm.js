@@ -10,7 +10,7 @@ export default function LoginForm(props) {
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
 
-    const [loginStatus, setLoginStatus] = useState(' ');
+    const [loginStatus, setLoginStatus] = useState('Welcome Back! Please enter your credentials');
 
 
     const router = useRouter();

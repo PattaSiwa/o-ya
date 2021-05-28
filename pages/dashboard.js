@@ -1,5 +1,8 @@
+import classes from './dashboard.module.css'
 export default function Dashboard() {
     return (
-        <h1>Welcome to OYA</h1>
+        <div className={classes.Dashboard}>
+            <h1 >This is the Dashboard</h1>
+        </div>
     )
 }

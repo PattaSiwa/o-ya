@@ -1,14 +1,21 @@
 import Link from 'next/link'
 import { Fragment } from 'react'
-import classses from './main-header.module.css'
+import classes from './main-header.module.css'
 import Image from 'next/image'
+import { useSession, signOut } from 'next-auth/client'
 
 function MainHeader() {
+    const [session, loading] = useSession()
+
+    function logoutHandler() {
+        signOut();
+    }
+
     return (
         <Fragment>
             <header>
-                <div className={classses.logoA}>
-                    <Link href="/"><Image alt="oya logo" src="/oya-icons/logo_transparent2.png" className={classses.logo} width={50} height={50} />
+                <div className={classes.logoA}>
+                    <Link href="/"><Image alt="oya logo" src="/oya-icons/logo_transparent2.png" className={classes.logo} width={50} height={50} />
                     </Link>
                 </div>
 
@@ -19,8 +26,9 @@ function MainHeader() {
                 </label>
                 <nav>
                     <ul>
-                        <li><Link href="/signup">Sign Up</Link></li>
-                        <li><Link href="/login">Login</Link></li>
+                        {!session && !loading && <li><Link href="/signup">Sign Up</Link></li>}
+                        {!session && !loading && <li><Link href="/login">Login</Link></li>}
+                        {session && <li><button className={classes.logoutBtn} onClick={logoutHandler}>Logout</button></li>}
 
                     </ul>
                 </nav>

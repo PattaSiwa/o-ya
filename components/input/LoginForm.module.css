@@ -1,15 +1,20 @@
-.input {
+.input  {
     font-family: 'Lobster', cursive;
     font-size: 1em;
+
     
+}
+
+.title, .input label {
+    font-family: 'Lobster', cursive;
+    margin-top: .3rem;
+    color: var(--primary)
 }
 
 .input label {
     display: block;
     padding: .2rem;
-    font-family: 'Lobster', cursive;
-    margin-top: .3rem;
-    color: var(--primary)
+    font-family: 'Oswald', sans-serif;
 }
 
 .input input {
@@ -73,11 +78,7 @@
     color:var(--primary)
 }
 
-.title {
-    font-family: 'Lobster', cursive;
-    margin-top: .3rem;
-    color: var(--primary)
-}
+
 
 @media screen and (min-width:1000px){
     .form {
@@ -85,6 +86,6 @@
     }
     .form input {
         height: 2.5rem;
-        font-size: 1em;
+        font-size: .8em;
     }
 }

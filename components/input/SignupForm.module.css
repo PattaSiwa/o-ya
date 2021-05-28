@@ -1,15 +1,20 @@
 .input {
-    font-family: 'Lobster', cursive;
+    font-family: 'Roboto', sans-serif;
     font-size: 1em;
     
+}
+
+.title, .input label {
+    font-family: 'Lobster', cursive;
+    margin-top: .3rem;
+    color: var(--primary)
 }
 
 .input label {
     display: block;
     padding: .2rem;
-    font-family: 'Lobster', cursive;
-    margin-top: .3rem;
-    color: var(--primary)
+    font-family: 'Oswald', sans-serif;
+
 }
 
 .signupStatus{
@@ -19,12 +24,6 @@
     text-align: center;
 }
 
-
-.title {
-    font-family: 'Lobster', cursive;
-    margin-top: .3rem;
-    color: var(--primary)
-}
 
 .input input {
     font-family: 'Roboto', sans-serif;
@@ -87,6 +86,6 @@
     }
     .form input {
         height: 2.5rem;
-        font-size: 1em;
+        font-size: .8em;
     }
 }

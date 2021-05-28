@@ -27,7 +27,7 @@ function SignUpForm() {
     const passwordInputRef = useRef();
     const reenterPasswordInputRef = useRef();
 
-    const [signupStatus, setSignupStatus] = useState('');
+    const [signupStatus, setSignupStatus] = useState('Create an Account to get started!');
 
     const router = useRouter();
 
