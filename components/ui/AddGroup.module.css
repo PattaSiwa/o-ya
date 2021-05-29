@@ -1,0 +1,18 @@
+.addGroup {
+    border: none;
+    font-size: 1em;
+    padding: .4rem;
+    background-color: var(--light);
+    color:var(--primary);
+    font-family: 'Oleo Script', cursive;
+    transition: .4s;
+    
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.addGroup:hover{
+    background-color: var(--primary);
+    color:var(--light);
+    cursor: pointer;
+}

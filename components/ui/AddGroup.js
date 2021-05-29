@@ -7,6 +7,6 @@ export default function AddGroup(props) {
         props.groupFormHandle()
     }
     return (
-        <button onClick={handleAddGroup}>Add Group</button>
+        <button className={classes.addGroup} onClick={handleAddGroup}>Add Group</button>
     )
 }

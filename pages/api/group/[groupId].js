@@ -20,14 +20,15 @@ export default async (req, res) => {
 
     switch (method) {
         case 'GET':
+            //actually getting the group by the owner's ID
             try {
-                const group = await Group.findById(groupId)
+                const groups = await Group.find({ owner: groupId })
 
-                if (!group) {
+                if (!groups) {
                     return res.status(400).json({ sucess: false })
                 }
 
-                res.status(200).json({ sucess: true, data: group })
+                res.status(200).json({ sucess: true, data: groups })
             }
             catch (error) {
                 res.status(400).json({ sucess: false })
