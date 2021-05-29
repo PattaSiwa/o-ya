@@ -29,7 +29,7 @@ export default NextAuth({
                 }
 
 
-                return { email: user.email }
+                return { email: user.email, id: user._id }
 
             }
 

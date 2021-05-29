@@ -28,6 +28,7 @@ function MainHeader() {
                     <ul>
                         {!session && !loading && <li><Link href="/signup">Sign Up</Link></li>}
                         {!session && !loading && <li><Link href="/login">Login</Link></li>}
+                        {session && <li><Link href="/dashboard">Dashboard</Link></li>}
                         {session && <li><button className={classes.logoutBtn} onClick={logoutHandler}>Logout</button></li>}
 
                     </ul>

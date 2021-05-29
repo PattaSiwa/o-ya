@@ -19,7 +19,7 @@
 
  .logoutBtn {
     color: var(--primary);
-    font-size: 1.2em;
+    font-size: 1em;
     text-transform: uppercase;
     background-color: var(--secondary);
     border: none;
@@ -36,9 +36,9 @@
     cursor: pointer;
 } 
 
-.logoutBtn::before {
+/* .logoutBtn::before {
     content: '';
-    display:block;
+    display:inline-block;
     height: 5px;
     background: var(--primary);
     position: absolute;
@@ -48,7 +48,7 @@
     right: 0;
     transform: scale(0,1);
     transition: transform ease-in-out .4s
-}
+} */
 
 .logoutBtn:hover::before {
     transform: scale(1,1)

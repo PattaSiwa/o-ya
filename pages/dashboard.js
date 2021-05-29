@@ -1,11 +1,22 @@
 import classes from './dashboard.module.css'
 import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
-export default function Dashboard() {
+import AddGroup from '../components/ui/AddGroup'
+
+
+export default function Dashboard(props) {
+    const [groupFormDisplay, setGroupFormDisplay] = useState(false)
+
+    function handleGroupForm() {
+        setGroupFormDisplay(!groupFormDisplay)
+    }
+
+    console.log(props.session)
+
 
     return (
         <div className={classes.Dashboard}>
-            <h1 >This is the Dashboard</h1>
+            <AddGroup groupFormHandle={handleGroupForm} />
         </div>
     )
 }
@@ -20,6 +31,12 @@ export async function getServerSideProps(context) {
             }
         }
     }
+
+
+
+
+
+
 
     return {
         props: { session },

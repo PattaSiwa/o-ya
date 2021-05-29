@@ -1,5 +1,6 @@
 import dbConnect from '../../../utils/dbConnect'
 import Expense from '../../../models/expense'
+import { getSession } from 'next-auth/client'
 
 dbConnect()
 
@@ -9,6 +10,13 @@ export default async (req, res) => {
         query: { expenseId },
         method
     } = req;
+
+    const session = await getSession({ req: req })
+
+    if (!session) {
+        res.status(401).json({ message: "Not Authenticated" })
+        return;
+    }
 
     switch (method) {
         case 'GET':

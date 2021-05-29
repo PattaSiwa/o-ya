@@ -5,7 +5,7 @@ header{
     z-index: 100;
     width: 100%;
     opacity: .8;
-    min-height: 3rem;
+    min-height: 2vh;
 }
 .logo-top {
     width: 40px;

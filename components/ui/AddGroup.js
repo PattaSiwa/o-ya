@@ -1,0 +1,12 @@
+import classes from './AddGroup.module.css'
+import { useState } from 'react'
+
+
+export default function AddGroup(props) {
+    function handleAddGroup() {
+        props.groupFormHandle()
+    }
+    return (
+        <button onClick={handleAddGroup}>Add Group</button>
+    )
+}

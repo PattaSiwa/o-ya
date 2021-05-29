@@ -3,9 +3,11 @@ import '../styles/globals.css'
 import '../styles/nav.css'
 import Head from 'next/head'
 
+
 function MyApp({ Component, pageProps }) {
 
   return (
+
     <Layout>
       <Head>
         <title>OYA</title>
@@ -14,6 +16,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
     </Layout>
+
 
   )
 }
