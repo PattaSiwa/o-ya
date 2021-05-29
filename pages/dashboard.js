@@ -2,6 +2,7 @@ import classes from './dashboard.module.css'
 import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import AddGroup from '../components/ui/AddGroup'
+import GroupForm from '../components/input/GroupForm'
 
 
 export default function Dashboard(props) {
@@ -20,6 +21,7 @@ export default function Dashboard(props) {
     return (
         <div className={classes.Dashboard}>
             <AddGroup groupFormHandle={handleGroupForm} />
+            {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
         </div>
     )
 }
