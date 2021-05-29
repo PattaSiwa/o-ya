@@ -6,6 +6,8 @@ import { verifyPassword } from '../../../utils/password'
 
 dbConnect();
 
+
+
 export default NextAuth({
     session: {
         jwt: true
@@ -28,11 +30,23 @@ export default NextAuth({
                     throw new Error('Email or Password incorrect')
                 }
 
-
+                console.log(user)
                 return { email: user.email, id: user._id }
 
             }
 
         })
-    ]
+    ],
+    callbacks: {
+        jwt: async (token, user, account, profile, isNewUser) => {
+            if (user) {
+                token.uid = user.id;
+            }
+            return Promise.resolve(token);
+        },
+        session: async (session, user) => {
+            session.user.uid = user.uid;
+            return Promise.resolve(session);
+        }
+    }
 })

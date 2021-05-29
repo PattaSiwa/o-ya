@@ -11,7 +11,10 @@ export default function Dashboard(props) {
         setGroupFormDisplay(!groupFormDisplay)
     }
 
-    console.log(props.session)
+    console.log(props.session.user.uid)
+
+    const userId = props.session.user.uid
+
 
 
     return (
@@ -31,10 +34,6 @@ export async function getServerSideProps(context) {
             }
         }
     }
-
-
-
-
 
 
 

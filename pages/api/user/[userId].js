@@ -1,5 +1,5 @@
 import dbConnect from '../../../utils/dbConnect'
-import User from '../../../models/expense'
+import User from '../../../models/user'
 
 
 
@@ -7,14 +7,16 @@ dbConnect()
 
 export default async (req, res) => {
     const {
-        query: { userEmail },
+        query: { userId },
         method
     } = req;
 
 
-    try {
-        const user = await User.findOne({ email: userEmail })
 
+    try {
+        console.log(userId)
+        const user = await User.findById(userId)
+        console.log(user)
         if (!user) {
             return res.status(400).json({ sucess: false, message: "User not found" })
         }
