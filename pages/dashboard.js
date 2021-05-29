@@ -18,12 +18,20 @@ export default function Dashboard(props) {
 
     const { data, error } = useSWR('/api/group/' + userId)
 
-    console.log(data)
+    const [groupsData, setGroupsData] = useState([])
+
+    useEffect(() => {
+        if (data) {
+            setGroupsData(data.data)
+        }
+    }, [data])
+
 
     return (
         <div className={classes.Dashboard}>
             <AddGroup groupFormHandle={handleGroupForm} />
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
+
 
         </div>
     )
@@ -39,11 +47,6 @@ export async function getServerSideProps(context) {
             }
         }
     }
-
-    // const userId = session.user.uid
-    // dbConnect()
-    // const groups = await Group.find({ owner: userId })
-    // console.log(groups)
 
 
     return {
