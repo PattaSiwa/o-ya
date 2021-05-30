@@ -1,17 +1,30 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import classes from './GroupCard.module.css'
 import Link from 'next/link'
 import EditGroupForm from '../input/EditGroupForm';
+import useSWR from 'swr'
 
 
 export default function GroupCard(props) {
     const [editFormState, setEditFormState] = useState(false);
 
+    // @refresh reset
+
     function handleEditForm() {
         setEditFormState(!editFormState)
+
     }
 
     const groupId = props.id
+
+    const { data: ownerData, error } = useSWR('/api/user/' + props.owner)
+    const [owner, setOwner] = useState([])
+
+    useEffect(() => {
+        if (ownerData) {
+            setOwner(ownerData.data)
+        }
+    }, [ownerData])
 
     async function deleteGroup() {
 
@@ -29,7 +42,8 @@ export default function GroupCard(props) {
             <div className={classes.card}>
                 <h3>{props.name}</h3>
                 <button>Add Member</button>
-                <p>Member1</p>
+                <p>Members</p>
+                <p>{owner.email}</p>
                 <p>Member2</p>
                 <Link href={"/group/" + props.id}><button>View Group</button></Link>
                 {props.owner === props.user && <button onClick={deleteGroup}>Delete Group</button>}

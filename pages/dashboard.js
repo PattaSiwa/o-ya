@@ -23,8 +23,10 @@ export default function Dashboard(props) {
         }
     }, [groupData])
 
-    console.log(groups)
-
+    // function handleChange() {
+    //     const { data: newData, error } = useSWR('/api/group/user/' + userId)
+    //     groupData = newData
+    // }
 
     return (
         <div className={classes.Dashboard}>
