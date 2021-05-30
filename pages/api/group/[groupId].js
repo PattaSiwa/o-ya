@@ -1,5 +1,5 @@
-import dbConnect from '../../../../utils/dbConnect'
-import Group from '../../../../models/group'
+import dbConnect from '../../../utils/dbConnect'
+import Group from '../../../models/group'
 import { getSession } from 'next-auth/client'
 
 dbConnect()

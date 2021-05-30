@@ -1,6 +1,5 @@
 
-import Image from 'next/image'
-import classes from './index.module.css'
+import classes from '../styles/pages-styles/index.module.css'
 import Link from 'next/link'
 
 export default function Home() {

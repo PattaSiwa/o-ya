@@ -1,5 +1,5 @@
 import LoginForm from '../components/input/LoginForm'
-import classes from './login.module.css'
+import classes from '../styles/pages-styles/login.module.css'
 import { getSession } from 'next-auth/client'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'

@@ -16,3 +16,7 @@
     color:var(--light);
     cursor: pointer;
 }
+
+.addGroup span{
+    font-size: 1.5em;
+}

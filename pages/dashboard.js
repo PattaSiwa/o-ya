@@ -1,4 +1,4 @@
-import classes from './dashboard.module.css'
+import classes from '../styles/pages-styles/dashboard.module.css'
 import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import AddGroup from '../components/ui/AddGroup'
@@ -14,9 +14,7 @@ export default function Dashboard(props) {
         setGroupFormDisplay(!groupFormDisplay)
     }
     const userId = props.session.user.uid
-
     const { data: groupData, error } = useSWR('/api/group/user/' + userId)
-
     const [groups, setGroupsData] = useState([])
 
     useEffect(() => {
@@ -34,7 +32,7 @@ export default function Dashboard(props) {
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
             <div className={classes.cardContainer}>
                 {groups.map(group => {
-                    return <GroupCard key={group.id} members={group.members} id={group._id} name={group.name} />
+                    return <GroupCard key={group._id} owner={group.owner} members={group.members} id={group._id} name={group.name} />
                 })}
             </div>
 

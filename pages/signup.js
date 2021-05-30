@@ -1,4 +1,4 @@
-import classes from './signup.module.css'
+import classes from '../styles/pages-styles/signup.module.css'
 import SignUpForm from '../components/input/SignupForm'
 import { getSession } from 'next-auth/client'
 import { useEffect, useState } from 'react'
