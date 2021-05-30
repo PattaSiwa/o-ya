@@ -40,16 +40,18 @@ function SignUpForm() {
         const enteredPassword = passwordInputRef.current.value;
         const reenteredPassword = reenterPasswordInputRef.current.value;
 
+        const loweredEmail = enteredEmail.toLowerCase()
+
         if (enteredPassword !== reenteredPassword) {
             setSignupStatus('Passwords do not match, please re-enter password')
             return;
         }
 
         try {
-            const result = await createUser(enteredEmail, enteredPassword);
+            const result = await createUser(loweredEmail, enteredPassword);
             const signInResult = await signIn('credentials', {
                 redirect: false,
-                email: enteredEmail,
+                email: loweredEmail,
                 password: enteredPassword,
             });
 

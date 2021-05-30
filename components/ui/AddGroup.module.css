@@ -2,7 +2,7 @@
     border: none;
     font-size: 1em;
     padding: .4rem;
-    background-color: var(--light);
+    background-color: var(--accent);
     color:var(--primary);
     font-family: 'Oleo Script', cursive;
     transition: .4s;

@@ -16,7 +16,7 @@ export default function Home() {
           <h3>Shared Expenses Made Simple</h3>
         </div>
 
-        <Link href="/signup"><button className={classes.getstarted}>Get Started</button></Link>
+        <Link href="/dashboard"><button className={classes.getstarted}>Get Started</button></Link>
       </div>
 
 

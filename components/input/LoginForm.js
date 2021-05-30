@@ -22,9 +22,11 @@ export default function LoginForm(props) {
         const enteredEmail = emailInputRef.current.value;
         const enteredPassword = passwordInputRef.current.value;
 
+        const loweredEmail = enteredEmail.toLowerCase()
+
         const result = await signIn('credentials', {
             redirect: false,
-            email: enteredEmail,
+            email: loweredEmail,
             password: enteredPassword,
         });
 
