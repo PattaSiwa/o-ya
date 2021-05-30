@@ -1,5 +1,6 @@
 import classes from './GroupForm.module.css'
 import { useState, useRef } from 'react'
+import { useRouter } from 'next/router'
 
 
 async function createGroup(name, owner) {
@@ -24,7 +25,7 @@ async function createGroup(name, owner) {
 export default function GroupForm(props) {
 
     const nameInputRef = useRef()
-
+    const router = useRouter()
     async function submitHandler(event) {
         event.preventDefault();
 
@@ -36,7 +37,7 @@ export default function GroupForm(props) {
 
             const result = await createGroup(enteredName, owner);
             props.handleForm()
-
+            router.reload()
         } catch (error) {
 
             console.log(error);

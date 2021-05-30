@@ -3,12 +3,13 @@ import classes from './GroupCard.module.css'
 import Link from 'next/link'
 import EditGroupForm from '../input/EditGroupForm';
 import useSWR from 'swr'
+import { useRouter } from 'next/router'
 
 
 export default function GroupCard(props) {
     const [editFormState, setEditFormState] = useState(false);
 
-    // @refresh reset
+    const router = useRouter()
 
     function handleEditForm() {
         setEditFormState(!editFormState)
@@ -33,6 +34,8 @@ export default function GroupCard(props) {
         if (!response.ok) {
             throw new Error(data.message || 'Something went wrong!');
         }
+        router.reload()
+
         return data;
     }
 

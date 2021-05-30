@@ -1,5 +1,6 @@
 import classes from './EditGroupForm.module.css'
 import { useState, useRef } from 'react'
+import { useRouter } from 'next/router'
 
 
 
@@ -26,6 +27,8 @@ async function editGroup(newName, id) {
 export default function EditGroupForm(props) {
 
     const nameInputRef = useRef()
+    const router = useRouter()
+
 
     const [enteredName, setEnteredName] = useState(props.name);
     const groupId = props.id
@@ -39,6 +42,7 @@ export default function EditGroupForm(props) {
 
             const result = await editGroup(enteredName, groupId);
             props.handleForm()
+            router.reload()
 
         } catch (error) {
 
