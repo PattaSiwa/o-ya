@@ -48,24 +48,27 @@ export default function GroupForm(props) {
 
     return (
         <div className={classes.formContainer}>
-            <form className={classes.form} onSubmit={submitHandler}>
-                <span onClick={() => props.handleForm()}>&times;</span>
-                <h2 className={classes.title}>Create Group</h2>
-                <div className={classes.input}>
-                    <label htmlFor='name'>Group Name</label>
-                    <input
-                        type='text'
-                        id='name'
-                        required ref={nameInputRef}
-                        placeholder="group name"
-                    />
-                </div>
+            <div className={classes.formBackDrop}>
+                <form className={classes.form} onSubmit={submitHandler}>
+                    <span onClick={() => props.handleForm()}>&times;</span>
+                    <h2 className={classes.title}>Create Group</h2>
+                    <div className={classes.input}>
+                        <label htmlFor='name'>Group Name</label>
+                        <input
+                            type='text'
+                            id='name'
+                            required ref={nameInputRef}
+                            placeholder="group name"
+                        />
+                    </div>
 
-                <div className={classes.actions}>
-                    <button>Create</button>
-                </div>
+                    <div className={classes.actions}>
+                        <button>Create</button>
+                    </div>
 
-            </form>
+                </form>
+            </div>
+
         </div>
 
     )
