@@ -32,7 +32,7 @@ export default function Dashboard(props) {
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
             <div className={classes.cardContainer}>
                 {groups.map(group => {
-                    return <GroupCard key={group._id} owner={group.owner} members={group.members} id={group._id} name={group.name} />
+                    return <GroupCard key={group._id} owner={group.owner} members={group.members} id={group._id} name={group.name} user={userId} />
                 })}
             </div>
 
