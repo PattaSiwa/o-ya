@@ -1,5 +1,5 @@
 .Dashboard {
-    height: 80vh;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,4 +10,10 @@
     font-family: 'Oleo Script', cursive;
     color: var(--primary);
     font-size: 3em;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

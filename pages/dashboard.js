@@ -3,9 +3,8 @@ import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
 import AddGroup from '../components/ui/AddGroup'
 import GroupForm from '../components/input/GroupForm'
-// import dbConnect from '../utils/dbConnect'
-// import Group from '../models/group'
 import useSWR from 'swr'
+import GroupCard from '../components/ui/GroupCard'
 
 
 export default function Dashboard(props) {
@@ -16,22 +15,28 @@ export default function Dashboard(props) {
     }
     const userId = props.session.user.uid
 
-    const { data, error } = useSWR('/api/group/' + userId)
+    const { data: groupData, error } = useSWR('/api/group/user/' + userId)
 
-    const [groupsData, setGroupsData] = useState([])
+    const [groups, setGroupsData] = useState([])
 
     useEffect(() => {
-        if (data) {
-            setGroupsData(data.data)
+        if (groupData) {
+            setGroupsData(groupData.data)
         }
-    }, [data])
+    }, [groupData])
+
+    console.log(groups)
 
 
     return (
         <div className={classes.Dashboard}>
             <AddGroup groupFormHandle={handleGroupForm} />
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
-
+            <div className={classes.cardContainer}>
+                {groups.map(group => {
+                    return <GroupCard key={group.id} members={group.members} id={group._id} name={group.name} />
+                })}
+            </div>
 
         </div>
     )
