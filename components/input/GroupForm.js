@@ -1,4 +1,4 @@
-import classes from './GroupForm.module.css'
+import classes from './EditGroupForm.module.css'
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 
@@ -48,8 +48,9 @@ export default function GroupForm(props) {
 
     return (
         <div className={classes.formContainer}>
-            <div className={classes.formBackDrop} onClick={() => props.handleForm()}>
-                <form className={classes.form} onSubmit={submitHandler}>
+            <div className={classes.formCenter} onClick={() => props.handleForm()}>
+
+                <form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()}>
                     <span onClick={() => props.handleForm()}>&times;</span>
                     <h2 className={classes.title}>Create Group</h2>
                     <div className={classes.input}>
@@ -67,6 +68,8 @@ export default function GroupForm(props) {
                     </div>
 
                 </form>
+
+
             </div>
 
         </div>

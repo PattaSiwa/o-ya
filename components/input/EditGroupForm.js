@@ -59,7 +59,7 @@ export default function EditGroupForm(props) {
     return (
         <div className={classes.formContainer}>
             <div className={classes.formCenter} onClick={() => props.handleForm()}>
-                <form className={classes.form} onSubmit={submitHandler}>
+                <form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()}>
                     <span onClick={() => props.handleForm()}>&times;</span>
                     <h2 className={classes.title}>Edit Group Name</h2>
                     <div className={classes.input}>
