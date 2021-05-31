@@ -17,6 +17,8 @@ export default function Dashboard(props) {
 
 
     const userId = props.session.user.uid
+    const userEmail = props.session.user.email
+    console.log(userEmail)
     const { data: groupData, error } = useSWR('/api/group/user/' + userId)
     const [groups, setGroupsData] = useState([])
 
@@ -33,7 +35,7 @@ export default function Dashboard(props) {
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
             <div className={classes.cardContainer}>
                 {groups.map(group => {
-                    return <GroupCard key={group._id} owner={group.owner} members={group.members} id={group._id} name={group.name} user={userId} />
+                    return <GroupCard key={group._id} owner={group.owner} email={userEmail} members={group.members} id={group._id} name={group.name} user={userId} />
                 })}
             </div>
 

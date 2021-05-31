@@ -57,11 +57,17 @@ export default function GroupForm(props) {
 
             const checkedIfMember = groupMembers.findIndex(member => member.id === searchedUser.id)
 
-            console.log(checkedIfMember)
-            //if user exist then we let user know then get out
+
+            //if user exist or if they're searching for themselve(trying to get cheeky) 
 
             if (checkedIfMember >= 0) {
                 setSearchState('User already a member')
+                return
+            }
+
+
+            if (props.ownerEmail === enteredEmail) {
+                setSearchState("You cannot add yourself as a member, you're already a member!")
                 return
             }
 
