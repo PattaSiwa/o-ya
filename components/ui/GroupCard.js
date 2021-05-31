@@ -6,11 +6,13 @@ import { useRouter } from 'next/router'
 import EditGroupForm from '../input/EditGroupForm';
 import UserSearch from '../input/UserSearch'
 import Member from '../ui/Member'
+import ConfirmDelete from '../input/ConfirmDelete'
 
 
 export default function GroupCard(props) {
     const [editFormState, setEditFormState] = useState(false);
     const [searchFormDisplay, setSearchFormDisplay] = useState(false)
+    const [deleteGroupDisplay, setDeleteGroupDisplay] = useState(false)
 
     const router = useRouter()
 
@@ -21,6 +23,10 @@ export default function GroupCard(props) {
 
     function handleSearchForm() {
         setSearchFormDisplay(!searchFormDisplay)
+    }
+
+    function handleDeleteModal() {
+        setDeleteGroupDisplay(!deleteGroupDisplay)
     }
 
     const groupId = props.id
@@ -74,14 +80,24 @@ export default function GroupCard(props) {
         <Fragment>
             <div className={classes.card}>
                 <h3>{props.name}</h3>
-                {props.owner === props.user && <button onClick={handleSearchForm}>Add Member</button>}
+                {props.owner === props.user && <button className={classes.addMember} onClick={handleSearchForm}>Add Member</button>}
                 {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} ownerEmail={props.email} groupId={props.id} members={props.members} />}
-                <p>Members</p>
-                <p>{owner.email}</p>
-                {props.members.map(member => <Member email={member.email} id={member.id} key={member.id} deleteMember={deleteMember} />)}
-                <Link href={"/group/" + props.id}><button>View Group</button></Link>
-                {props.owner === props.user && <button onClick={deleteGroup}>Delete Group</button>}
-                {props.owner === props.user && <button onClick={handleEditForm}>Edit Name</button>}
+                <div className={classes.memberContainer}>
+                    <p className={classes.owner}>{owner.email}</p>
+                    {props.members.map(member => <Member email={member.email} id={member.id} key={member.id} deleteMember={deleteMember} />)}
+                </div>
+                <div className={classes.btnContainer}>
+                    <Link href={"/group/" + props.id}><button className={classes.viewBtn}>View Group</button></Link>
+                    {props.owner === props.user && <button className={classes.deleteBtn} onClick={handleDeleteModal}>Delete Group</button>}
+                    {props.owner === props.user && <button className={classes.editBtn} onClick={handleEditForm}>Edit Name</button>}
+                </div>
+                {deleteGroupDisplay &&
+                    <ConfirmDelete
+                        message={"Are you sure you would like to DELETE this group?, All expenses related to this group will also be deleted"}
+                        close={handleDeleteModal}
+                        delete={deleteGroup}
+                    />}
+
                 {editFormState && <EditGroupForm handleForm={handleEditForm} name={props.name} id={props.id} />}
             </div>
         </Fragment>

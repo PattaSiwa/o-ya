@@ -14,8 +14,8 @@
 
 .footer h3 {
     font-family: 'Oleo Script', cursive;
-    color: black;
-    opacity: .5;
+    color: rgba(92, 89, 89, 0.734);
+    
     letter-spacing: 1px;
 }
 

@@ -1,15 +1,21 @@
 .Member {
     display: flex;
     justify-content: space-between;
+    font-family: 'Oleo Script', cursive;
+    height: auto;
+    
 }
 
 .email {
     color: var(--light);
+    font-size: 1.3em;
+    
 }
 
 .close {
     color: var(--primary);
     transition: .3s;
+    font-size: 1.4em;
 }
 
 .close:hover {

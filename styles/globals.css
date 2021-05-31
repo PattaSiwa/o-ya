@@ -9,12 +9,12 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background: #F2D0BD;
   background: -moz-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
   background: -webkit-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
   background: linear-gradient(to bottom, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
+
+
 }
 
 a {
@@ -35,6 +35,7 @@ a {
   --shadow: #DEC3AE;
 
 }
+
 
 html {
   box-sizing: border-box;

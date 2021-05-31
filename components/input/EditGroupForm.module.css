@@ -10,7 +10,7 @@
     bottom:0;
     left:0;
     right:0;
-   
+    z-index: 1000;
 }
 
 .formCenter {
@@ -87,6 +87,7 @@
     max-width: 500px;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    z-index: 100;
 }
 
 .actions button{
