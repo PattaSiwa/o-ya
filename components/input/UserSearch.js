@@ -68,8 +68,8 @@ export default function GroupForm(props) {
             groupMembers.push(searchedUser)
             addMember(groupMembers, groupId)
 
-            // props.handleForm()
-            // router.reload()
+            props.handleForm()
+            router.reload()
 
             return
 

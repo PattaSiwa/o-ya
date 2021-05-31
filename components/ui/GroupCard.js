@@ -5,6 +5,7 @@ import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import EditGroupForm from '../input/EditGroupForm';
 import UserSearch from '../input/UserSearch'
+import Member from '../ui/Member'
 
 
 export default function GroupCard(props) {
@@ -34,6 +35,7 @@ export default function GroupCard(props) {
         }
     }, [ownerData])
 
+
     async function deleteGroup() {
 
         const response = await fetch('/api/group/' + groupId, { method: 'DELETE' })
@@ -46,6 +48,27 @@ export default function GroupCard(props) {
         return data;
     }
 
+    async function deleteMember(memberEmail) {
+        const copyMembers = [...props.members]
+        const index = copyMembers.findIndex(member => member.email === memberEmail)
+        copyMembers.splice(index, 1)
+        try {
+            const response = await fetch('/api/group/' + groupId, {
+                method: "PUT",
+                body: JSON.stringify({
+                    members: copyMembers
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            router.reload()
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <Fragment>
@@ -55,6 +78,7 @@ export default function GroupCard(props) {
                 {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} groupId={props.id} members={props.members} />}
                 <p>Members</p>
                 <p>{owner.email}</p>
+                {props.members.map(member => <Member email={member.email} id={member.id} key={member.id} deleteMember={deleteMember} />)}
                 <Link href={"/group/" + props.id}><button>View Group</button></Link>
                 {props.owner === props.user && <button onClick={deleteGroup}>Delete Group</button>}
                 {props.owner === props.user && <button onClick={handleEditForm}>Edit Name</button>}

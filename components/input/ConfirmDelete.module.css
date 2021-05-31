@@ -1,0 +1,68 @@
+.backdrop {
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+.content {
+    width: 40%;
+    min-width: 300px;
+    max-width: 500px;
+    height: auto;
+    background-color: var(--shadow);
+    font-family: 'Roboto', sans-serif;
+    padding: 2rem;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+
+}
+
+.content p {
+    
+    letter-spacing: 1px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.buttons button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    border: none;
+    padding: .5rem;
+    transition: .3s;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.deleteBtn {
+    background-color: var(--primary);
+    color: whitesmoke;
+}
+
+.cancelBtn {
+    background-color: var(--secondary);
+}
+
+.buttons button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}

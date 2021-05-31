@@ -1,0 +1,18 @@
+.Member {
+    display: flex;
+    justify-content: space-between;
+}
+
+.email {
+    color: var(--light);
+}
+
+.close {
+    color: var(--primary);
+    transition: .3s;
+}
+
+.close:hover {
+    cursor: pointer;
+    transform: scale(1.5)
+}
