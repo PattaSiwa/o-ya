@@ -22,8 +22,8 @@ export default function GroupCard(props) {
         setSearchFormDisplay(!searchFormDisplay)
     }
 
-
     const groupId = props.id
+
 
     const { data: ownerData, error } = useSWR('/api/user/' + props.owner)
     const [owner, setOwner] = useState([])
@@ -51,11 +51,10 @@ export default function GroupCard(props) {
         <Fragment>
             <div className={classes.card}>
                 <h3>{props.name}</h3>
-                <button onClick={handleSearchForm}>Add Member</button>
-                {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} groupId={props.id} memmbers={props.members} />}
+                {props.owner === props.user && <button onClick={handleSearchForm}>Add Member</button>}
+                {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} groupId={props.id} members={props.members} />}
                 <p>Members</p>
                 <p>{owner.email}</p>
-                <p>Member2</p>
                 <Link href={"/group/" + props.id}><button>View Group</button></Link>
                 {props.owner === props.user && <button onClick={deleteGroup}>Delete Group</button>}
                 {props.owner === props.user && <button onClick={handleEditForm}>Edit Name</button>}

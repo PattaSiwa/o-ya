@@ -4,23 +4,23 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 
-// async function addMember(email, id) {
-//     const response = await fetch('/api/group', {
-//         method: 'PUT',
-//         body: JSON.stringify({ email: email, id: id }),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     });
+async function addMember(members, groupId) {
+    const response = await fetch('/api/group/' + groupId, {
+        method: 'PUT',
+        body: JSON.stringify({ members: members }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
-//     const data = await response.json();
+    const data = await response.json();
 
-//     if (!response.ok) {
-//         throw new Error(data.message || 'Something went wrong!');
-//     }
+    if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong!');
+    }
 
-//     return data;
-// }
+    return data;
+}
 
 
 export default function GroupForm(props) {
@@ -35,17 +35,44 @@ export default function GroupForm(props) {
 
         const enteredEmail = emailInputRef.current.value;
         const groupId = props.groupId
+        const groupMembers = [...props.members]
 
-        console.log(enteredEmail)
+        console.log(groupMembers)
 
         try {
 
             const response = await fetch('api/user/' + enteredEmail)
-            const searchedUser = await response.json()
+            const searchedUserData = await response.json()
 
-            if (searchedUser.success === false) {
-                setSearchState(searchedUser.message)
+            if (searchedUserData.success === false) {
+                setSearchState(searchedUserData.message)
+                return
             }
+
+            const searchedUser = {
+                email: searchedUserData.data.email,
+                id: searchedUserData.data.id
+            }
+            //check if user already a member
+
+            const checkedIfMember = groupMembers.findIndex(member => member.id === searchedUser.id)
+
+            console.log(checkedIfMember)
+            //if user exist then we let user know then get out
+
+            if (checkedIfMember >= 0) {
+                setSearchState('User already a member')
+                return
+            }
+
+            groupMembers.push(searchedUser)
+            addMember(groupMembers, groupId)
+
+            // props.handleForm()
+            // router.reload()
+
+            return
+
 
         }
         catch (error) {
@@ -53,15 +80,6 @@ export default function GroupForm(props) {
         }
 
 
-
-        // try {
-        //     const result = await createGroup(enteredName, owner);
-        //     props.handleForm()
-        //     router.reload()
-        // } catch (error) {
-
-        //     console.log(error);
-        // }
 
 
     }
