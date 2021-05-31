@@ -1,13 +1,15 @@
 import { Fragment, useState, useEffect } from 'react'
 import classes from './GroupCard.module.css'
 import Link from 'next/link'
-import EditGroupForm from '../input/EditGroupForm';
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
+import EditGroupForm from '../input/EditGroupForm';
+import UserSearch from '../input/UserSearch'
 
 
 export default function GroupCard(props) {
     const [editFormState, setEditFormState] = useState(false);
+    const [searchFormDisplay, setSearchFormDisplay] = useState(false)
 
     const router = useRouter()
 
@@ -15,6 +17,11 @@ export default function GroupCard(props) {
         setEditFormState(!editFormState)
 
     }
+
+    function handleSearchForm() {
+        setSearchFormDisplay(!searchFormDisplay)
+    }
+
 
     const groupId = props.id
 
@@ -44,7 +51,8 @@ export default function GroupCard(props) {
         <Fragment>
             <div className={classes.card}>
                 <h3>{props.name}</h3>
-                <button>Add Member</button>
+                <button onClick={handleSearchForm}>Add Member</button>
+                {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} />}
                 <p>Members</p>
                 <p>{owner.email}</p>
                 <p>Member2</p>

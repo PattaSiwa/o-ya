@@ -1,4 +1,3 @@
-// sharing CSS with editgroupform
 import classes from './EditGroupForm.module.css'
 import { useRef } from 'react'
 import { useRouter } from 'next/router'

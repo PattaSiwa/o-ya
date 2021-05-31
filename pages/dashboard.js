@@ -10,9 +10,12 @@ import GroupCard from '../components/ui/GroupCard'
 export default function Dashboard(props) {
     const [groupFormDisplay, setGroupFormDisplay] = useState(false)
 
+
     function handleGroupForm() {
         setGroupFormDisplay(!groupFormDisplay)
     }
+
+
     const userId = props.session.user.uid
     const { data: groupData, error } = useSWR('/api/group/user/' + userId)
     const [groups, setGroupsData] = useState([])
@@ -23,10 +26,6 @@ export default function Dashboard(props) {
         }
     }, [groupData])
 
-    // function handleChange() {
-    //     const { data: newData, error } = useSWR('/api/group/user/' + userId)
-    //     groupData = newData
-    // }
 
     return (
         <div className={classes.Dashboard}>
