@@ -1,47 +1,67 @@
 import classes from './EditGroupForm.module.css'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 
 
-async function createGroup(name, owner) {
-    const response = await fetch('/api/group', {
-        method: 'POST',
-        body: JSON.stringify({ name, owner }),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+// async function addMember(email, id) {
+//     const response = await fetch('/api/group', {
+//         method: 'PUT',
+//         body: JSON.stringify({ email: email, id: id }),
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//     });
 
-    const data = await response.json();
+//     const data = await response.json();
 
-    if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong!');
-    }
+//     if (!response.ok) {
+//         throw new Error(data.message || 'Something went wrong!');
+//     }
 
-    return data;
-}
+//     return data;
+// }
 
 
 export default function GroupForm(props) {
 
-    const nameInputRef = useRef()
+    const emailInputRef = useRef()
     const router = useRouter()
+
+    const [searchState, setSearchState] = useState('Emails are NOT case sensitive')
+
     async function submitHandler(event) {
         event.preventDefault();
 
-        const enteredName = nameInputRef.current.value;
-        const owner = props.userId
+        const enteredEmail = emailInputRef.current.value;
+        const groupId = props.groupId
 
-        console.log(enteredName, owner)
+        console.log(enteredEmail)
+
         try {
 
-            const result = await createGroup(enteredName, owner);
-            props.handleForm()
-            router.reload()
-        } catch (error) {
+            const response = await fetch('api/user/' + enteredEmail)
+            const searchedUser = await response.json()
 
-            console.log(error);
+            if (searchedUser.success === false) {
+                setSearchState(searchedUser.message)
+            }
+
         }
+        catch (error) {
+            console.log(error)
+        }
+
+
+
+        // try {
+        //     const result = await createGroup(enteredName, owner);
+        //     props.handleForm()
+        //     router.reload()
+        // } catch (error) {
+
+        //     console.log(error);
+        // }
 
 
     }
@@ -52,19 +72,20 @@ export default function GroupForm(props) {
 
                 <form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()}>
                     <span onClick={() => props.handleForm()}>&times;</span>
-                    <h2 className={classes.title}>Create Group</h2>
+                    <h2 className={classes.title}>Add Member</h2>
                     <div className={classes.input}>
-                        <label htmlFor='name'>Group Name</label>
+                        <label htmlFor='name'>Email</label>
                         <input
-                            type='text'
-                            id='name'
-                            required ref={nameInputRef}
-                            placeholder="group name"
+                            type='email'
+                            id='email'
+                            required ref={emailInputRef}
+                            placeholder="enter user email"
                         />
                     </div>
+                    <p className={classes.searchStatus}>{searchState}</p>
 
                     <div className={classes.actions}>
-                        <button>Create</button>
+                        <button>Add to Group</button>
                     </div>
 
                 </form>

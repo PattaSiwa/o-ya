@@ -52,7 +52,7 @@ export default function GroupCard(props) {
             <div className={classes.card}>
                 <h3>{props.name}</h3>
                 <button onClick={handleSearchForm}>Add Member</button>
-                {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} />}
+                {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} groupId={props.id} memmbers={props.members} />}
                 <p>Members</p>
                 <p>{owner.email}</p>
                 <p>Member2</p>

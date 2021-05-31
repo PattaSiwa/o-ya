@@ -27,7 +27,12 @@
 }
 
 
-
+.searchStatus{
+    display: block;
+    font-size: .7em;
+    color: var(--primary);
+    text-align: center;
+}
 
 
 .form span {
