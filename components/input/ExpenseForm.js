@@ -1,12 +1,12 @@
 import classes from './EditGroupForm.module.css'
 import { useRef } from 'react'
-import { useRouter } from 'next/router'
 
 
-async function createExpense(name, date, amount, description, group, owner) {
+
+async function createExpense(name, date, amount, description, group, owner, email) {
     const response = await fetch('/api/expense', {
         method: 'POST',
-        body: JSON.stringify({ name, date, amount, description, group, owner }),
+        body: JSON.stringify({ name, date, amount, description, group, owner, email }),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -15,7 +15,7 @@ async function createExpense(name, date, amount, description, group, owner) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.message || 'Something went wrong!');
+        throw new Error(data.message);
     }
 
     return data;
@@ -30,9 +30,12 @@ export default function ExpenseForm(props) {
     const descriptionInputRef = useRef()
     const groupId = props.groupId
     const ownerId = props.userId
+    const userEmail = props.userEmail
+
+    console.log(userEmail)
 
 
-    const router = useRouter()
+
 
     async function submitHandler(event) {
         event.preventDefault();
@@ -44,10 +47,23 @@ export default function ExpenseForm(props) {
 
         try {
 
-            const result = await createExpense(enteredName, enteredDate, enteredAmount, enteredDescription, groupId, ownerId);
+            const result = await createExpense(
+                enteredName,
+                enteredDate,
+                enteredAmount,
+                enteredDescription,
+                groupId,
+                ownerId,
+                userEmail,
+            );
+
+            const copyExpenses = [...props.expenses]
+            const newExpense = result.data
+            copyExpenses.push(newExpense)
+
+            props.setExpenses(copyExpenses)
             props.handleForm()
 
-            // router.reload()
         } catch (error) {
 
             console.log(error);

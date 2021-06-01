@@ -10,7 +10,9 @@ export default function GroupPage(props) {
     const router = useRouter()
     const groupId = router.query.groupId
     const userId = props.session.user.uid
-    console.log(groupId)
+    const userEmail = props.session.user.email
+
+
 
     //expense form
     const [expenseFormState, setExpenseFormState] = useState(false)
@@ -21,12 +23,15 @@ export default function GroupPage(props) {
     //fetching data for all expenses with groupId of this page's group
 
     const { data: expenseData, error } = useSWR('/api/expense/group/' + groupId)
-    console.log(expenseData)
+    const [expenses, setExpenses] = useState([])
+
     useEffect(() => {
         if (expenseData) {
-            console.log(expenseData.data)
+            setExpenses(expenseData.data)
         }
     }, [expenseData])
+
+    console.log(expenses)
 
     //group data
     const { data: groupData, error: groupError } = useSWR('/api/group/' + groupId)
@@ -38,16 +43,18 @@ export default function GroupPage(props) {
         }
     }, [groupData])
 
-    console.log(group)
 
     return (
         <div className={classes.GroupPage}>
-            <h3></h3>
+            <h3>{group.name}</h3>
             <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
             {expenseFormState && <ExpenseForm
                 groupId={groupId}
                 userId={userId}
+                userEmail={userEmail}
                 handleForm={setExpenseFormState}
+                setExpenses={setExpenses}
+                expenses={expenses}
             />}
         </div>
     )

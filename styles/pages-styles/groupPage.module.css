@@ -3,8 +3,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .GroupPage h3 {
     margin:0;
+    font-family: 'Lobster';
+    color: var(--primary);
+    font-size: 2em;
 }

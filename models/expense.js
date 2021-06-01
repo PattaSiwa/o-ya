@@ -5,7 +5,6 @@ const expenseSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Please add a title'],
-        unique: true,
         maxlength: [40, 'name cannot be more than 40 characters']
     },
     description: { type: String },
@@ -21,6 +20,9 @@ const expenseSchema = new Schema({
     group: {
         type: Schema.Types.ObjectId,
         ref: 'Group'
+    },
+    email: {
+        type: String
     }
 })
 
