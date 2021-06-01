@@ -59,8 +59,7 @@
 @media screen and (max-width:800px) {
     .logoA{
         margin: auto;
-        position: relative;
-        right: -140px;
+        float: right;
         width: 20%;
     }
 

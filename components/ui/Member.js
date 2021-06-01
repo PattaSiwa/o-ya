@@ -13,8 +13,8 @@ export default function Member(props) {
     return (
         <div className={classes.Member}>
             <p className={classes.email}>{props.email}</p>
-            {props.user === props.owner && <p c
-                lassName={classes.close}
+            {props.user === props.owner && <p
+                className={classes.close}
                 onClick={handleDelete}>&times;
             </p>}
             {deleteStatus && <ConfirmDelete

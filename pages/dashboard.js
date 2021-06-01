@@ -39,7 +39,6 @@ export default function Dashboard(props) {
         }
     }, [groupMemberData])
 
-    console.log(memberGroups)
 
     return (
         <div className={classes.Dashboard}>
