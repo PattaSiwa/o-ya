@@ -18,8 +18,9 @@ export default function Dashboard(props) {
 
     const userId = props.session.user.uid
     const userEmail = props.session.user.email
-    console.log(userEmail)
-    const { data: groupData, error } = useSWR('/api/group/user/' + userId)
+
+    //getting groups that user is the owner
+    const { data: groupData, error: groupError } = useSWR('/api/group/user/' + userId)
     const [groups, setGroupsData] = useState([])
 
     useEffect(() => {
@@ -28,6 +29,17 @@ export default function Dashboard(props) {
         }
     }, [groupData])
 
+    //getting groups that user is the member
+    const { data: groupMemberData, error: memberGroupError } = useSWR('/api/group/' + userId)
+    const [memberGroups, setMemberGroups] = useState([])
+
+    useEffect(() => {
+        if (groupMemberData) {
+            setMemberGroups(groupMemberData.data)
+        }
+    }, [groupMemberData])
+
+    console.log(memberGroups)
 
     return (
         <div className={classes.Dashboard}>
@@ -35,6 +47,9 @@ export default function Dashboard(props) {
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
             <div className={classes.cardContainer}>
                 {groups.map(group => {
+                    return <GroupCard key={group._id} owner={group.owner} email={userEmail} members={group.members} id={group._id} name={group.name} user={userId} />
+                })}
+                {memberGroups.map(group => {
                     return <GroupCard key={group._id} owner={group.owner} email={userEmail} members={group.members} id={group._id} name={group.name} user={userId} />
                 })}
             </div>

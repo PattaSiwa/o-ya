@@ -7,7 +7,7 @@ dbConnect()
 
 export default async (req, res) => {
     const {
-        query: { groupId },
+        query: { userId },
         method
     } = req;
 
@@ -20,9 +20,9 @@ export default async (req, res) => {
 
     switch (method) {
         case 'GET':
-            //actually getting the group by the owner's ID
+
             try {
-                const group = await Group.findById(groupId)
+                const group = await Group.find({ "members.id": userId })
 
                 if (!group) {
                     return res.status(400).json({ sucess: false })
@@ -38,7 +38,7 @@ export default async (req, res) => {
         case 'PUT':
 
             try {
-                const group = await Group.findByIdAndUpdate(groupId, req.body, {
+                const group = await Group.findByIdAndUpdate(userId, req.body, {
                     new: true,
                     runValidators: true
                 })
@@ -57,7 +57,7 @@ export default async (req, res) => {
 
         case 'DELETE':
             try {
-                const deletedGroup = await Group.deleteOne({ _id: groupId })
+                const deletedGroup = await Group.deleteOne({ _id: userId })
 
                 if (!deletedGroup) {
                     return res.status(400).json({ sucess: false })
