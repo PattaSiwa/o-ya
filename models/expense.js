@@ -10,8 +10,8 @@ const expenseSchema = new Schema({
     },
     description: { type: String },
     amount: {
-        type: Number,
-        default: 0
+        type: String,
+        default: '0'
     },
     owner: {
         type: Schema.Types.ObjectId,

@@ -24,7 +24,11 @@ export default function GroupPage(props) {
     return (
         <main className={classes.GroupPage}>
             <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
-            {expenseFormState && <ExpenseForm groupId={groupId} userId={userId} />}
+            {expenseFormState && <ExpenseForm
+                groupId={groupId}
+                userId={userId}
+                handleForm={setExpenseFormState}
+            />}
         </main>
     )
 }

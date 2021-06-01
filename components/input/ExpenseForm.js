@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 
 async function createExpense(name, date, amount, description, owner, group) {
-    const response = await fetch('/api/group', {
+    const response = await fetch('/api/expense', {
         method: 'POST',
         body: JSON.stringify({ name, date, amount, description, owner, group }),
         headers: {
@@ -50,15 +50,17 @@ export default function ExpenseForm(props) {
         console.log(enteredDescription)
         console.log(groupId)
         console.log(ownerId)
-        // try {
+        try {
 
-        //     const result = await createGroup(enteredName, owner);
-        //     props.handleForm()
-        //     router.reload()
-        // } catch (error) {
+            const result = await createExpense(enteredName, enteredDate, enteredAmount, enteredDescription, groupId, ownerId);
+            props.handleForm()
 
-        //     console.log(error);
-        // }
+            console.log(result)
+            // router.reload()
+        } catch (error) {
+
+            console.log(error);
+        }
 
 
     }
