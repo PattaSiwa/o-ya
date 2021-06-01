@@ -50,23 +50,23 @@ export default function Dashboard(props) {
                     return <GroupCard
                         key={group._id}
                         user={userId}
-                        owner={group.owner}
                         email={userEmail}
+                        owner={group.owner}
                         members={group.members}
                         id={group._id}
                         name={group.name}
-                        user={userId} />
+                    />
                 })}
                 {memberGroups.map(group => {
                     return <GroupCard
                         key={group._id}
                         user={userId}
-                        owner={group.owner}
                         email={userEmail}
+                        owner={group.owner}
                         members={group.members}
                         id={group._id}
                         name={group.name}
-                        user={userId} />
+                    />
                 })}
             </div>
 
