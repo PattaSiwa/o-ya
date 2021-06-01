@@ -84,7 +84,7 @@ export default function GroupCard(props) {
                 {searchFormDisplay && <UserSearch handleForm={setSearchFormDisplay} ownerEmail={props.email} groupId={props.id} members={props.members} />}
                 <div className={classes.memberContainer}>
                     <p className={classes.owner}>{owner.email}</p>
-                    {props.members.map(member => <Member email={member.email} id={member.id} key={member.id} deleteMember={deleteMember} />)}
+                    {props.members.map(member => <Member email={member.email} id={member.id} key={member.id} owner={props.owner} user={props.user} deleteMember={deleteMember} />)}
                 </div>
                 <div className={classes.btnContainer}>
                     <Link href={"/group/" + props.id}><button className={classes.viewBtn}>View Group</button></Link>

@@ -13,7 +13,7 @@ body {
   background: -moz-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
   background: -webkit-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
   background: linear-gradient(to bottom, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
-
+  font-family: 'Roboto', sans-serif;
 
 }
 
