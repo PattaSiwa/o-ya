@@ -1,16 +1,45 @@
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
+import { getSession } from 'next-auth/client'
 import classes from '../../styles/pages-styles/groupPage.module.css'
+import Add from '../../components/ui/Add'
+import { useState, useEffect } from 'react'
 
 export default function GroupPage(props) {
     const router = useRouter()
-    console.log(router.query.groupId)
+    const groupId = router.query.groupId
+    const userId = props.session.user.uid
+
+    console.log(groupId, userId)
+
+    const [expenseFormState, setExpenseFormState] = useState(false)
+
+    function handleExpenseForm() {
+        setExpenseFormState(!expenseFormState)
+        console.log(expenseFormState)
+    }
 
 
     return (
-        <div className={classes.GroupPage}>
-            <h3>View Page for Group</h3>
-        </div>
+        <main className={classes.GroupPage}>
+            <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
+        </main>
     )
 }
 
+export async function getServerSideProps(context) {
+    const session = await getSession({ req: context.req })
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false
+            }
+        }
+    }
+
+
+    return {
+        props: { session },
+    }
+}

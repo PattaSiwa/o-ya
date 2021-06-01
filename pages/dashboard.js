@@ -1,7 +1,7 @@
 import classes from '../styles/pages-styles/dashboard.module.css'
 import { useState, useEffect } from 'react'
 import { getSession } from 'next-auth/client'
-import AddGroup from '../components/ui/AddGroup'
+import Add from '../components/ui/Add'
 import GroupForm from '../components/input/GroupForm'
 import useSWR from 'swr'
 import GroupCard from '../components/ui/GroupCard'
@@ -43,14 +43,30 @@ export default function Dashboard(props) {
 
     return (
         <div className={classes.Dashboard}>
-            <AddGroup groupFormHandle={handleGroupForm} />
+            <Add content={'GROUP'} formHandle={handleGroupForm} />
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
             <div className={classes.cardContainer}>
                 {groups.map(group => {
-                    return <GroupCard key={group._id} user={userId} owner={group.owner} email={userEmail} members={group.members} id={group._id} name={group.name} user={userId} />
+                    return <GroupCard
+                        key={group._id}
+                        user={userId}
+                        owner={group.owner}
+                        email={userEmail}
+                        members={group.members}
+                        id={group._id}
+                        name={group.name}
+                        user={userId} />
                 })}
                 {memberGroups.map(group => {
-                    return <GroupCard key={group._id} user={userId} owner={group.owner} email={userEmail} members={group.members} id={group._id} name={group.name} user={userId} />
+                    return <GroupCard
+                        key={group._id}
+                        user={userId}
+                        owner={group.owner}
+                        email={userEmail}
+                        members={group.members}
+                        id={group._id}
+                        name={group.name}
+                        user={userId} />
                 })}
             </div>
 
