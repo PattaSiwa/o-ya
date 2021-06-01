@@ -3,10 +3,10 @@ import { useRef } from 'react'
 import { useRouter } from 'next/router'
 
 
-async function createExpense(name, group, owner, description, date, amount) {
+async function createExpense(name, date, amount, description, owner, group) {
     const response = await fetch('/api/group', {
         method: 'POST',
-        body: JSON.stringify({ name, group, owner, description, date, amount }),
+        body: JSON.stringify({ name, date, amount, description, owner, group }),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -25,9 +25,9 @@ async function createExpense(name, group, owner, description, date, amount) {
 export default function ExpenseForm(props) {
 
     const nameInputRef = useRef()
-    const descriptionInputRef = useRef()
-    const amountInputRef = useRef()
     const dateInputRef = useRef()
+    const amountInputRef = useRef()
+    const descriptionInputRef = useRef()
     const groupId = props.groupId
     const ownerId = props.userId
 
@@ -38,18 +38,27 @@ export default function ExpenseForm(props) {
         event.preventDefault();
 
         const enteredName = nameInputRef.current.value;
-        const owner = props.userId
+        const enteredDate = dateInputRef.current.value;
+        const enteredAmount = amountInputRef.current.value;
+        const enteredDescription = descriptionInputRef.current.value;
 
-        console.log(enteredName, owner)
-        try {
 
-            const result = await createGroup(enteredName, owner);
-            props.handleForm()
-            router.reload()
-        } catch (error) {
+        console.log(enteredName)
+        console.log(enteredDate)
+        console.log(enteredAmount)
+        console.log(typeof enteredAmount)
+        console.log(enteredDescription)
+        console.log(groupId)
+        console.log(ownerId)
+        // try {
 
-            console.log(error);
-        }
+        //     const result = await createGroup(enteredName, owner);
+        //     props.handleForm()
+        //     router.reload()
+        // } catch (error) {
+
+        //     console.log(error);
+        // }
 
 
     }
@@ -66,7 +75,8 @@ export default function ExpenseForm(props) {
                         <input
                             type='text'
                             id='name'
-                            required ref={nameInputRef}
+                            required
+                            ref={nameInputRef}
                             placeholder="name"
                         />
                         <label for="date">Date</label>
@@ -74,17 +84,18 @@ export default function ExpenseForm(props) {
                             type="date"
                             id="date"
                             name="date"
-
                             min="2020-01-01"
                             max="2050-12-31"
-                            required ref={dateInputRef}
+                            required
+                            ref={dateInputRef}
                         />
 
                         <label htmlFor='amount'>Amount $</label>
                         <input
                             type='number'
                             id='amount'
-                            required ref={amountInputRef}
+                            required
+                            ref={amountInputRef}
                             min='0.00'
                             max='10000'
                             step='0.01'
@@ -93,7 +104,8 @@ export default function ExpenseForm(props) {
                         <input
                             type='text'
                             id='description'
-                            required ref={descriptionInputRef}
+                            required
+                            ref={descriptionInputRef}
                             placeholder="description"
                         />
                     </div>
