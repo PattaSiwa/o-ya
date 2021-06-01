@@ -4,6 +4,7 @@ import { getSession } from 'next-auth/client'
 import classes from '../../styles/pages-styles/groupPage.module.css'
 import Add from '../../components/ui/Add'
 import { useState, useEffect } from 'react'
+import ExpenseForm from '../../components/input/ExpenseForm'
 
 export default function GroupPage(props) {
     const router = useRouter()
@@ -23,6 +24,7 @@ export default function GroupPage(props) {
     return (
         <main className={classes.GroupPage}>
             <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
+            {expenseFormState && <ExpenseForm groupId={groupId} userId={userId} />}
         </main>
     )
 }

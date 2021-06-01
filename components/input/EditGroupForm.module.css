@@ -36,6 +36,7 @@
 }
 
 
+
 .form span {
     float: right;
     color: var(--primary);
@@ -114,7 +115,6 @@
 .actions {
     margin-top: 3rem;
 }
-
 
 
 @media screen and (min-width:1000px){

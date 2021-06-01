@@ -17,7 +17,7 @@ const expenseSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    date: { type: Date },
+    date: { type: String },
     group: {
         type: Schema.Types.ObjectId,
         ref: 'Group'
