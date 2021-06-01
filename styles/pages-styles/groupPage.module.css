@@ -7,8 +7,12 @@
 }
 
 .GroupPage h3 {
-    margin:0;
+    margin: 3.4rem 0 0 0;
     font-family: 'Lobster';
     color: var(--primary);
     font-size: 2em;
+}
+
+.addBtn {
+    margin-top: 0;
 }

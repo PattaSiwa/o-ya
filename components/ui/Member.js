@@ -21,7 +21,7 @@ export default function Member(props) {
                 close={handleDelete}
                 memberEmail={props.email}
                 delete={props.deleteMember}
-                essage={'Are you sure you want to DELETE this member from the group? All expenses by this member will also be deleted'}
+                message={'Are you sure you want to DELETE this member from the group? All expenses by this member will also be deleted'}
             />}
         </div>
     )

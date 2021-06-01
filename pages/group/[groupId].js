@@ -5,6 +5,7 @@ import classes from '../../styles/pages-styles/groupPage.module.css'
 import Add from '../../components/ui/Add'
 import { useState, useEffect } from 'react'
 import ExpenseForm from '../../components/input/ExpenseForm'
+import ExpenseCard from '../../components/ui/ExpenseCard'
 
 export default function GroupPage(props) {
     const router = useRouter()
@@ -31,8 +32,6 @@ export default function GroupPage(props) {
         }
     }, [expenseData])
 
-    console.log(expenses)
-
     //group data
     const { data: groupData, error: groupError } = useSWR('/api/group/' + groupId)
     const [group, setGroupData] = useState([])
@@ -47,7 +46,7 @@ export default function GroupPage(props) {
     return (
         <div className={classes.GroupPage}>
             <h3>{group.name}</h3>
-            <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
+            <Add className={classes.addBtn} content={'EXPENSE'} formHandle={handleExpenseForm} />
             {expenseFormState && <ExpenseForm
                 groupId={groupId}
                 userId={userId}
@@ -56,6 +55,12 @@ export default function GroupPage(props) {
                 setExpenses={setExpenses}
                 expenses={expenses}
             />}
+            {expenses.map(expense => {
+                return <ExpenseCard
+                    key={expense._id}
+                    expense={expense}
+                />
+            })}
         </div>
     )
 }

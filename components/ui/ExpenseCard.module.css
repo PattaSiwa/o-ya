@@ -1,0 +1,29 @@
+.expenseCard {
+    width: 95%;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    overflow:hidden;
+    background-color: var(--shadow);
+    padding: .5rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.expenseCard p {
+    line-height: 1.5rem;
+}
+
+@media screen and (min-width:800px){
+    .expenseCard{
+        width: 50%;
+        max-width: 400px;
+    }
+
+    .info {
+        flex-direction: row;
+    }
+
+}
