@@ -3,10 +3,10 @@ import { useRef } from 'react'
 import { useRouter } from 'next/router'
 
 
-async function createExpense(name, date, amount, description, owner, group) {
+async function createExpense(name, date, amount, description, group, owner) {
     const response = await fetch('/api/expense', {
         method: 'POST',
-        body: JSON.stringify({ name, date, amount, description, owner, group }),
+        body: JSON.stringify({ name, date, amount, description, group, owner }),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -42,20 +42,11 @@ export default function ExpenseForm(props) {
         const enteredAmount = amountInputRef.current.value;
         const enteredDescription = descriptionInputRef.current.value;
 
-
-        console.log(enteredName)
-        console.log(enteredDate)
-        console.log(enteredAmount)
-        console.log(typeof enteredAmount)
-        console.log(enteredDescription)
-        console.log(groupId)
-        console.log(ownerId)
         try {
 
             const result = await createExpense(enteredName, enteredDate, enteredAmount, enteredDescription, groupId, ownerId);
             props.handleForm()
 
-            console.log(result)
             // router.reload()
         } catch (error) {
 
@@ -81,7 +72,7 @@ export default function ExpenseForm(props) {
                             ref={nameInputRef}
                             placeholder="name"
                         />
-                        <label for="date">Date</label>
+                        <label htmlFor="date">Date</label>
                         <input
                             type="date"
                             id="date"

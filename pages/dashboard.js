@@ -30,7 +30,7 @@ export default function Dashboard(props) {
     }, [groupData])
 
     //getting groups that user is the member
-    const { data: groupMemberData, error: memberGroupError } = useSWR('/api/group/' + userId)
+    const { data: groupMemberData, error: memberGroupError } = useSWR('/api/group/member/' + userId)
     const [memberGroups, setMemberGroups] = useState([])
 
     useEffect(() => {

@@ -10,26 +10,46 @@ export default function GroupPage(props) {
     const router = useRouter()
     const groupId = router.query.groupId
     const userId = props.session.user.uid
+    console.log(groupId)
 
-    console.log(groupId, userId)
-
+    //expense form
     const [expenseFormState, setExpenseFormState] = useState(false)
-
     function handleExpenseForm() {
         setExpenseFormState(!expenseFormState)
-        console.log(expenseFormState)
     }
 
+    //fetching data for all expenses with groupId of this page's group
+
+    const { data: expenseData, error } = useSWR('/api/expense/group/' + groupId)
+    console.log(expenseData)
+    useEffect(() => {
+        if (expenseData) {
+            console.log(expenseData.data)
+        }
+    }, [expenseData])
+
+    //group data
+    const { data: groupData, error: groupError } = useSWR('/api/group/' + groupId)
+    const [group, setGroupData] = useState([])
+
+    useEffect(() => {
+        if (groupData) {
+            setGroupData(groupData.data)
+        }
+    }, [groupData])
+
+    console.log(group)
 
     return (
-        <main className={classes.GroupPage}>
+        <div className={classes.GroupPage}>
+            <h3></h3>
             <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
             {expenseFormState && <ExpenseForm
                 groupId={groupId}
                 userId={userId}
                 handleForm={setExpenseFormState}
             />}
-        </main>
+        </div>
     )
 }
 
