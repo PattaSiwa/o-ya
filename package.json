@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "framer-motion": "^4.1.17",
     "fs": "^0.0.1-security",
     "mongoose": "^5.12.11",
     "next": "10.2.3",

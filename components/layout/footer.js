@@ -3,7 +3,7 @@ import classes from './footer.module.css'
 function Footer() {
     return (
         <footer className={classes.footer}>
-            <img className={classes.logo} src='/oya-icons/logo_transparent.png' />
+            <img className={classes.logo} src='/oya-icons/logo_transparentfooter.png' />
             <div className={classes.copyright}>
                 <h3>Copyright &copy; 2021 OYA</h3>
                 <h3>By Pattarapon Siwapornchai</h3>

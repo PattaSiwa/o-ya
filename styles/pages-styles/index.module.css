@@ -14,11 +14,13 @@
 }
 
 .mainLogo{
+    width: 35%;
+    height: auto;
     filter: drop-shadow(20px 10px 4px rgba(44, 37, 22, 0.705));
 }
 
 .slogan h3 {
-    color: rgb(197, 131, 8);
+    color: var(--secondary);
     font-size: 3em;
     text-shadow: 3px 3px 3px #4b4232;
     font-family: 'Lobster', cursive;
@@ -38,10 +40,10 @@
 
 .getstarted {
     border: none;
-    background-color: rgb(197, 131, 8);
+    background-color: rgb(121, 160, 232);
     color: var(--primary);
     font-family: 'Oleo Script', cursive;
-    margin-top: 2rem;
+    margin-bottom: 6rem;
     padding: .5rem 1rem;
     font-size: 1.5em;
     border-radius: 30px;
@@ -80,7 +82,7 @@
 
 @media screen and (max-width:700px){
     .mainLogo{
-        width: 60%;
+        width: 50%;
         height: auto;
     }
 
