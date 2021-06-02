@@ -98,6 +98,16 @@ export default function GroupCard(props) {
 
             })
 
+            const copyMemberEmail = memberEmail
+
+            console.log(copyMemberEmail)
+
+            const url = 'api/expense/membergroupall/' + copyMemberEmail + '&' + groupId
+
+            console.log(url)
+
+            const deleteMemberExpenses = await fetch(url, { method: 'DELETE' })
+
             const data = await response.json()
             const updatedGroup = data.data
 

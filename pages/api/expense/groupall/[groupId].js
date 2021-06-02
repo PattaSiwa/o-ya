@@ -11,12 +11,12 @@ export default async (req, res) => {
         method
     } = req;
 
-    // const session = await getSession({ req: req })
+    const session = await getSession({ req: req })
 
-    // if (!session) {
-    //     res.status(401).json({ message: "Not Authenticated" })
-    //     return;
-    // }
+    if (!session) {
+        res.status(401).json({ message: "Not Authenticated" })
+        return;
+    }
 
     if (method === "DELETE") {
         try {
