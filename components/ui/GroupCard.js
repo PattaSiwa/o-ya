@@ -61,19 +61,22 @@ export default function GroupCard(props) {
 
     async function deleteGroup() {
 
-        const response = await fetch('/api/group/' + groupId, { method: 'DELETE' })
-        const data = await response.json();
-        if (!response.ok) {
+        const responseGroupDelete = await fetch('/api/group/' + groupId, { method: 'DELETE' })
+        const data = await responseGroupDelete.json();
+        if (!responseGroupDelete.ok) {
             throw new Error(data.message || 'Something went wrong!');
         }
+
+        //also remove all expenses in that group
+
+        const responseExpensesRemove = await fetch('/api/expense/groupall/' + groupId, { method: 'DELETE' })
+        const deletedExpenses = await responseExpensesRemove.json
 
         const copyGroupList = [...props.groupsList]
         const index = copyGroupList.findIndex(group => group._id === groupId)
 
         copyGroupList.splice(index, 1)
-
         props.setGroups(copyGroupList)
-
 
         return data;
     }

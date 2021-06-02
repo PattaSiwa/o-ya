@@ -52,6 +52,7 @@
 @media screen and (min-width:800px){
     .expenseCard{
         width: 50%;
+        margin: 1rem 1rem;
         max-width: 400px;
     }
 
