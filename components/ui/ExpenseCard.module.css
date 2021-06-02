@@ -21,8 +21,12 @@
 .amountSide span {
     font-family: 'Lobster';
     color: var(--danger);
-    font-size: 1.5em;
+    font-size: 1.7em;
     float:right;
+}
+
+.amountSide strong{
+    display: none;
 }
 
 .expenseCard p {
@@ -54,6 +58,10 @@
         width: 50%;
         margin: 1rem 1rem;
         max-width: 400px;
+    }
+
+    .amountSide strong{
+        display: block;
     }
 
     .info {

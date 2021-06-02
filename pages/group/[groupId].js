@@ -1,12 +1,15 @@
 import useSWR from 'swr'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { getSession } from 'next-auth/client'
-import classes from '../../styles/pages-styles/groupPage.module.css'
-import Add from '../../components/ui/Add'
-import { useState, useEffect } from 'react'
-import ExpenseForm from '../../components/input/ExpenseForm'
-import ExpenseCard from '../../components/ui/ExpenseCard'
 import { motion } from 'framer-motion'
+
+import classes from '../../styles/pages-styles/groupPage.module.css'
+import ExpenseForm from '../../components/input/ExpenseForm'
+import Add from '../../components/ui/Add'
+import ExpenseCard from '../../components/ui/ExpenseCard'
+import TotalDisplay from '../../components/ui/TotalDisplay'
+
 
 export default function GroupPage(props) {
     const router = useRouter()
@@ -79,6 +82,9 @@ export default function GroupPage(props) {
                 <h3>{group.name}</h3>
                 <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
             </motion.div>
+            <TotalDisplay
+                expenses={expenses}
+            />
 
             {expenseFormState && <ExpenseForm
                 groupId={groupId}

@@ -2,6 +2,7 @@
 import classes from './EditGroupForm.module.css'
 import { useRef } from 'react'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 
 async function createGroup(name, owner, email) {
@@ -57,7 +58,20 @@ export default function GroupForm(props) {
         <div className={classes.formContainer}>
             <div className={classes.formCenter} onClick={() => props.handleForm()}>
 
-                <form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()}>
+                <motion.form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()} initial="hidden" animate="visible"
+                    variants={{
+                        hidden: {
+                            translateY: -200,
+                            opacity: 0,
+                        },
+                        visible: {
+                            translateY: 0,
+                            opacity: 1,
+                            transition: {
+                                duration: .8
+                            }
+                        }
+                    }}>
                     <span onClick={() => props.handleForm()}>&times;</span>
                     <h2 className={classes.title}>Create Group</h2>
                     <div className={classes.input}>
@@ -74,7 +88,7 @@ export default function GroupForm(props) {
                         <button>Create</button>
                     </div>
 
-                </form>
+                </motion.form>
 
 
             </div>

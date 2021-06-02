@@ -1,5 +1,6 @@
 import classes from './EditGroupForm.module.css'
 import { useRef } from 'react'
+import { motion } from 'framer-motion'
 
 
 
@@ -69,7 +70,20 @@ export default function ExpenseForm(props) {
         <div className={classes.formContainer}>
             <div className={classes.formCenter} onClick={() => props.handleForm()}>
 
-                <form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()}>
+                <motion.form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()} initial="hidden" animate="visible"
+                    variants={{
+                        hidden: {
+                            scale: 0,
+                            opacity: 0,
+                        },
+                        visible: {
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                                duration: .8
+                            }
+                        }
+                    }}>
                     <span onClick={() => props.handleForm()}>&times;</span>
                     <h2 className={classes.title}>Create Expense</h2>
                     <div className={classes.input}>
@@ -109,7 +123,7 @@ export default function ExpenseForm(props) {
                         <button>Add Expense</button>
                     </div>
 
-                </form>
+                </motion.form>
 
 
             </div>

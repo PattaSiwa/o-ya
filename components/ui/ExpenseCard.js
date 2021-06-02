@@ -17,9 +17,9 @@ export default function ExpenseCard(props) {
                     <p><strong>Amount:</strong> <span>${expenseData.amount}</span></p>
                 </div>
                 <div className={classes.datails}>
+                    <p className={classes.email}><strong>{expenseData.email}</strong></p>
                     <p><strong>Date:</strong> <span>{expenseData.date}</span></p>
                     <p><strong>Description:</strong> {expenseData.description}</p>
-                    <p className={classes.email}><strong>{expenseData.email}</strong></p>
                 </div>
 
             </div>

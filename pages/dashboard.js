@@ -9,13 +9,12 @@ import { motion } from 'framer-motion'
 
 
 export default function Dashboard(props) {
+
+
     const [groupFormDisplay, setGroupFormDisplay] = useState(false)
-
-
     function handleGroupForm() {
         setGroupFormDisplay(!groupFormDisplay)
     }
-
 
     const userId = props.session.user.uid
     const userEmail = props.session.user.email
@@ -50,13 +49,13 @@ export default function Dashboard(props) {
                             duration: 1
                         },
                         opacity: 0,
-                        translateY: -100
+                        scale: 0
                     },
                     visible: {
                         opacity: 1,
-                        translateY: 0,
+                        scale: 1,
                         transition: {
-                            delay: .4,
+                            delay: 1,
                             duration: 1.5
                         }
                     }

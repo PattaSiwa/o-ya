@@ -1,6 +1,7 @@
 import classes from './EditGroupForm.module.css'
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 
 
@@ -66,7 +67,20 @@ export default function EditGroupForm(props) {
     return (
         <div className={classes.formContainer}>
             <div className={classes.formCenter} onClick={() => props.handleForm()}>
-                <form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()}>
+                <motion.form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()} initial="hidden" animate="visible"
+                    variants={{
+                        hidden: {
+                            scale: 2,
+                            opacity: 0,
+                        },
+                        visible: {
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                                duration: .8
+                            }
+                        }
+                    }}>
                     <span onClick={() => props.handleForm()}>&times;</span>
                     <h2 className={classes.title}>Edit Group Name</h2>
                     <div className={classes.input}>
@@ -85,7 +99,7 @@ export default function EditGroupForm(props) {
                         <button>Edit</button>
                     </div>
 
-                </form>
+                </motion.form>
             </div>
         </div>
 

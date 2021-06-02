@@ -1,7 +1,6 @@
 import classes from './EditGroupForm.module.css'
 import { useRef, useState } from 'react'
-import { useRouter } from 'next/router'
-import useSWR from 'swr'
+import { motion } from 'framer-motion'
 
 
 async function addMember(members, groupId) {
@@ -26,7 +25,7 @@ async function addMember(members, groupId) {
 export default function GroupForm(props) {
 
     const emailInputRef = useRef()
-    const router = useRouter()
+
 
     const [searchState, setSearchState] = useState('Emails are NOT case sensitive')
 
@@ -34,13 +33,14 @@ export default function GroupForm(props) {
         event.preventDefault();
 
         const enteredEmail = emailInputRef.current.value;
+        const loweredEmail = enteredEmail.toLowerCase()
         const groupId = props.groupId
         const groupMembers = [...props.members]
 
 
         try {
 
-            const response = await fetch('api/user/' + enteredEmail)
+            const response = await fetch('api/user/' + loweredEmail)
             const searchedUserData = await response.json()
 
             if (searchedUserData.success === false) {
@@ -99,7 +99,20 @@ export default function GroupForm(props) {
         <div className={classes.formContainer}>
             <div className={classes.formCenter} onClick={() => props.handleForm()}>
 
-                <form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()}>
+                <motion.form className={classes.form} onSubmit={submitHandler} onClick={(e) => e.stopPropagation()} initial="hidden" animate="visible"
+                    variants={{
+                        hidden: {
+                            scale: 0,
+                            opacity: 0,
+                        },
+                        visible: {
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                                duration: .8
+                            }
+                        }
+                    }}>
                     <span onClick={() => props.handleForm()}>&times;</span>
                     <h2 className={classes.title}>Add Member</h2>
                     <div className={classes.input}>
@@ -117,7 +130,7 @@ export default function GroupForm(props) {
                         <button>Add to Group</button>
                     </div>
 
-                </form>
+                </motion.form>
 
 
             </div>
