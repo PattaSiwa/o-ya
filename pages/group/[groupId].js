@@ -107,6 +107,7 @@ export default function GroupPage(props) {
                     return <ExpenseCard
                         key={expense._id}
                         expense={expense}
+                        userId={userId}
                         deleteExpense={deleteExpense}
                     />
                 })}

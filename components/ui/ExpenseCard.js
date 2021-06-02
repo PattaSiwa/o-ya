@@ -22,7 +22,7 @@ export default function ExpenseCard(props) {
                 </div>
 
             </div>
-            <button className={classes.deleteBtn} onClick={setConfirmDeleteState}>DELETE</button>
+            {expenseData.owner === props.userId && <button className={classes.deleteBtn} onClick={setConfirmDeleteState}>DELETE</button>}
 
             {confirmDeleteState &&
                 <ConfirmDelete
