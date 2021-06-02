@@ -41,8 +41,15 @@ export default function EditGroupForm(props) {
         try {
 
             const result = await editGroup(enteredName, groupId);
+
+            const copyGroups = [...props.groupsList]
+            const index = copyGroups.findIndex(group => group._id === groupId)
+            const updatedGroup = result.data
+
+            copyGroups.splice(index, 1, updatedGroup)
+            props.setGroups(copyGroups)
             props.handleForm()
-            router.reload()
+
 
         } catch (error) {
 

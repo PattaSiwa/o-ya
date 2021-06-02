@@ -14,8 +14,6 @@ export default function GroupCard(props) {
     const [searchFormDisplay, setSearchFormDisplay] = useState(false)
     const [deleteGroupDisplay, setDeleteGroupDisplay] = useState(false)
 
-    const router = useRouter()
-
     function handleEditForm() {
         setEditFormState(!editFormState)
 
@@ -31,17 +29,34 @@ export default function GroupCard(props) {
 
     const groupId = props.id
 
-
-
-
-    const { data: ownerData, error } = useSWR('/api/user/' + props.owner)
-    const [owner, setOwner] = useState([])
+    // get members
+    const [members, setMembers] = useState([])
+    const updatedMembers = props.members
 
     useEffect(() => {
-        if (ownerData) {
-            setOwner(ownerData.data)
+        if (updatedMembers) {
+            setMembers(updatedMembers)
         }
-    }, [ownerData])
+    }, [updatedMembers])
+
+
+    // const { data: ownerData, error } = useSWR('/api/user/' + props.owner)
+    // const [owner, setOwner] = useState([])
+
+    // useEffect(() => {
+    //     if (ownerData) {
+    //         setOwner(ownerData.data)
+    //     }
+    // }, [ownerData])
+
+    //get group data
+    const [group, setGroup] = useState({})
+    const groupDataProps = props.group
+    useEffect(() => {
+        if (groupDataProps) {
+            setGroup(groupDataProps)
+        }
+    }, [groupDataProps])
 
 
     async function deleteGroup() {
@@ -76,9 +91,18 @@ export default function GroupCard(props) {
                 headers: {
                     'Content-Type': 'application/json'
                 }
+
+
             })
 
-            router.reload()
+            const data = await response.json()
+            const updatedGroup = data.data
+
+            const copyGroupList = [...props.groupsList]
+            const index = copyGroupList.findIndex(group => group._id === groupId)
+            copyGroupList.splice(index, 1, updatedGroup)
+            props.setGroups(copyGroupList)
+
 
         } catch (error) {
             console.log(error)
@@ -98,10 +122,12 @@ export default function GroupCard(props) {
                     ownerEmail={props.email}
                     groupId={props.id}
                     members={props.members}
+                    groupsList={props.groupsList}
+                    setGroups={props.setGroups}
                 />}
                 <div className={classes.memberContainer}>
-                    <p className={classes.owner}>{owner.email}</p>
-                    {props.members.map(member => <Member
+                    <p className={classes.owner}>{group.email}</p>
+                    {members.map(member => <Member
                         email={member.email}
                         id={member.id}
                         key={member.id}
@@ -121,7 +147,7 @@ export default function GroupCard(props) {
                         delete={deleteGroup}
                     />}
 
-                {editFormState && <EditGroupForm handleForm={handleEditForm} name={props.name} id={props.id} />}
+                {editFormState && <EditGroupForm handleForm={handleEditForm} name={props.name} id={props.id} groupsList={props.groupsList} setGroups={props.setGroups} />}
             </div>
         </Fragment>
 

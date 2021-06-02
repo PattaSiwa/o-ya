@@ -4,10 +4,10 @@ import { useRef } from 'react'
 import { useRouter } from 'next/router'
 
 
-async function createGroup(name, owner) {
+async function createGroup(name, owner, email) {
     const response = await fetch('/api/group', {
         method: 'POST',
-        body: JSON.stringify({ name, owner }),
+        body: JSON.stringify({ name, owner, email }),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -32,13 +32,19 @@ export default function GroupForm(props) {
 
         const enteredName = nameInputRef.current.value;
         const owner = props.userId
+        const email = props.email
 
         console.log(enteredName, owner)
         try {
 
-            const result = await createGroup(enteredName, owner);
+            const result = await createGroup(enteredName, owner, email);
+            const newGroup = result.data
+            const copyGroups = [...props.groupsList]
+            copyGroups.push(newGroup)
+            console.log(copyGroups)
+            props.setGroups(copyGroups)
             props.handleForm()
-            router.reload()
+            // router.reload()
         } catch (error) {
 
             console.log(error);

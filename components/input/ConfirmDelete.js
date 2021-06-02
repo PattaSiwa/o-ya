@@ -35,7 +35,6 @@ export default function ConfirmDelete(props) {
                             scale: 1,
                             opacity: 1,
                             transition: {
-                                delay: .3,
                                 duration: .8
                             }
                         }

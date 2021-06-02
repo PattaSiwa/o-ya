@@ -37,7 +37,6 @@ export default function GroupForm(props) {
         const groupId = props.groupId
         const groupMembers = [...props.members]
 
-        console.log(groupMembers)
 
         try {
 
@@ -72,10 +71,16 @@ export default function GroupForm(props) {
             }
 
             groupMembers.push(searchedUser)
-            addMember(groupMembers, groupId)
+            const result = await addMember(groupMembers, groupId)
+
+            const copyGroups = [...props.groupsList]
+            const index = copyGroups.findIndex(group => group._id === groupId)
+            const updatedGroup = result.data
+            copyGroups.splice(index, 1, updatedGroup)
+            props.setGroups(copyGroups)
 
             props.handleForm()
-            router.reload()
+
 
             return
 

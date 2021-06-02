@@ -63,7 +63,7 @@ export default function Dashboard(props) {
                 }}>
                 <Add content={'GROUP'} formHandle={handleGroupForm} />
             </motion.div>
-            {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
+            {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} groupsList={groups} setGroups={setGroupsData} email={userEmail} />}
             <motion.div className={classes.cardContainer} initial="hidden" animate="visible"
                 variants={{
                     hidden: {
@@ -86,6 +86,7 @@ export default function Dashboard(props) {
                         key={group._id}
                         user={userId}
                         email={userEmail}
+                        group={group}
                         owner={group.owner}
                         members={group.members}
                         id={group._id}
@@ -98,6 +99,7 @@ export default function Dashboard(props) {
                     return <GroupCard
                         key={group._id}
                         user={userId}
+                        group={group}
                         email={userEmail}
                         owner={group.owner}
                         members={group.members}

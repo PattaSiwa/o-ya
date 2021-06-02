@@ -12,6 +12,9 @@ const groupSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    email: {
+        type: String
     }
 })
 
