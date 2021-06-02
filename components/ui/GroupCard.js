@@ -32,6 +32,8 @@ export default function GroupCard(props) {
     const groupId = props.id
 
 
+
+
     const { data: ownerData, error } = useSWR('/api/user/' + props.owner)
     const [owner, setOwner] = useState([])
 
@@ -49,7 +51,14 @@ export default function GroupCard(props) {
         if (!response.ok) {
             throw new Error(data.message || 'Something went wrong!');
         }
-        router.reload()
+
+        const copyGroupList = [...props.groupsList]
+        const index = copyGroupList.findIndex(group => group._id === groupId)
+
+        copyGroupList.splice(index, 1)
+
+        props.setGroups(copyGroupList)
+
 
         return data;
     }

@@ -59,16 +59,26 @@ export default function GroupPage(props) {
         return data;
     }
 
-    const addStyle = {
-        margin: "1rem 0"
-    }
+
 
     return (
         <div className={classes.GroupPage}>
-            <div className={classes.header}>
+            <motion.div className={classes.header} initial="hidden" animate="visible"
+                variants={{
+                    hidden: {
+                        opacity: 0,
+                    },
+                    visible: {
+                        opacity: 1,
+                        transition: {
+                            delay: 1,
+                            duration: 1
+                        }
+                    }
+                }}>
                 <h3>{group.name}</h3>
-                <Add style={addStyle} content={'EXPENSE'} formHandle={handleExpenseForm} />
-            </div>
+                <Add content={'EXPENSE'} formHandle={handleExpenseForm} />
+            </motion.div>
 
             {expenseFormState && <ExpenseForm
                 groupId={groupId}

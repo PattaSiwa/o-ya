@@ -50,12 +50,11 @@ export default function Dashboard(props) {
                             duration: 1
                         },
                         opacity: 0,
-                        translateX: -200
+                        translateY: -100
                     },
                     visible: {
-                        scale: 1,
                         opacity: 1,
-                        translateX: 0,
+                        translateY: 0,
                         transition: {
                             delay: .4,
                             duration: 1.5
@@ -72,14 +71,12 @@ export default function Dashboard(props) {
                             duration: 1
                         },
                         opacity: 0,
-                        translateX: 200
+
                     },
                     visible: {
-                        scale: 1,
                         opacity: 1,
-                        translateX: 0,
                         transition: {
-                            delay: .4,
+                            delay: .7,
                             duration: 1.5
                         }
                     }
@@ -93,6 +90,8 @@ export default function Dashboard(props) {
                         members={group.members}
                         id={group._id}
                         name={group.name}
+                        setGroups={setGroupsData}
+                        groupsList={groups}
                     />
                 })}
                 {memberGroups.map(group => {

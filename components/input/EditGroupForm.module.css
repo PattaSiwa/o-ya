@@ -83,7 +83,7 @@
   }
 
 .form {
-    background: rgba(93, 125, 102,1);
+    background: var(--accent);
     width: 95%;
     padding: 1rem;
     min-height: 50vh;

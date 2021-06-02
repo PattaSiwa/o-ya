@@ -42,7 +42,7 @@
     padding: .2rem;
     display: block;
     border: none;
-    background-color: var(--light);
+    background-color: var(--shadow);
   
     color:var(--secondary);
     transition: .3s;
@@ -98,7 +98,7 @@
 }
 
 .viewBtn {
-    background-color: var(--light);
+    background-color: var(--shadow);
 
 }
 
@@ -107,7 +107,7 @@
 }
 
 .editBtn {
-    background-color: var(--accent);
+    background-color: var(--secondary);
 }
 
 @media screen and (max-width:500px) {
