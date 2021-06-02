@@ -9,10 +9,10 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: #F2D0BD;
-  background: -moz-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
-  background: -webkit-linear-gradient(top, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
-  background: linear-gradient(to bottom, #F2D0BD 0%, #9FC7BB 62%, #749189 100%);
+  background: #BFD0DB;
+  background: -moz-linear-gradient(top, #BFD0DB 0%, #D9D6E3 53%, #8899CC 100%);
+  background: -webkit-linear-gradient(top, #BFD0DB 0%, #D9D6E3 53%, #8899CC 100%);
+  background: linear-gradient(to bottom, #BFD0DB 0%, #D9D6E3 53%, #8899CC 100%);
   font-family: 'Roboto', sans-serif;
 
 }
@@ -33,6 +33,14 @@ a {
   --accent: #BF8969;
   --light: #5D7D66;
   --shadow: #DEC3AE;
+
+  --primary: #3b4257;
+  --secondary:#6a7b91;
+  --accent: #B0C0CA;
+  --light: #D3C6DC;
+  --shadow: #E7E4F2;
+  --danger: rgb(143, 40, 71);
+
 
 }
 

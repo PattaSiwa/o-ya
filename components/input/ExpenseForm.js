@@ -3,10 +3,10 @@ import { useRef } from 'react'
 
 
 
-async function createExpense(name, date, amount, description, group, owner, email) {
+async function createExpense(date, amount, description, group, owner, email) {
     const response = await fetch('/api/expense', {
         method: 'POST',
-        body: JSON.stringify({ name, date, amount, description, group, owner, email }),
+        body: JSON.stringify({ date, amount, description, group, owner, email }),
         headers: {
             'Content-Type': 'application/json',
         },
@@ -24,7 +24,6 @@ async function createExpense(name, date, amount, description, group, owner, emai
 
 export default function ExpenseForm(props) {
 
-    const nameInputRef = useRef()
     const dateInputRef = useRef()
     const amountInputRef = useRef()
     const descriptionInputRef = useRef()
@@ -32,15 +31,10 @@ export default function ExpenseForm(props) {
     const ownerId = props.userId
     const userEmail = props.userEmail
 
-    console.log(userEmail)
-
-
-
 
     async function submitHandler(event) {
         event.preventDefault();
 
-        const enteredName = nameInputRef.current.value;
         const enteredDate = dateInputRef.current.value;
         const enteredAmount = amountInputRef.current.value;
         const enteredDescription = descriptionInputRef.current.value;
@@ -48,7 +42,6 @@ export default function ExpenseForm(props) {
         try {
 
             const result = await createExpense(
-                enteredName,
                 enteredDate,
                 enteredAmount,
                 enteredDescription,
@@ -80,13 +73,15 @@ export default function ExpenseForm(props) {
                     <span onClick={() => props.handleForm()}>&times;</span>
                     <h2 className={classes.title}>Create Expense</h2>
                     <div className={classes.input}>
-                        <label htmlFor='name'>Expense Name</label>
+                        <label htmlFor='amount'>Amount $</label>
                         <input
-                            type='text'
-                            id='name'
+                            type='number'
+                            id='amount'
                             required
-                            ref={nameInputRef}
-                            placeholder="name"
+                            ref={amountInputRef}
+                            min='0.00'
+                            max='10000'
+                            step='0.01'
                         />
                         <label htmlFor="date">Date</label>
                         <input
@@ -99,16 +94,7 @@ export default function ExpenseForm(props) {
                             ref={dateInputRef}
                         />
 
-                        <label htmlFor='amount'>Amount $</label>
-                        <input
-                            type='number'
-                            id='amount'
-                            required
-                            ref={amountInputRef}
-                            min='0.00'
-                            max='10000'
-                            step='0.01'
-                        />
+
                         <label htmlFor='description'>Description</label>
                         <input
                             type='text'

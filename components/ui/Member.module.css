@@ -7,13 +7,13 @@
 }
 
 .email {
-    color: var(--light);
+    color: var(--primary);
     font-size: 1.3em;
     
 }
 
 .close {
-    color: var(--primary);
+    color: var(--danger);
     transition: .3s;
     font-size: 1.4em;
 }

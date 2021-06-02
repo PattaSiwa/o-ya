@@ -42,11 +42,28 @@ export default function GroupPage(props) {
         }
     }, [groupData])
 
+    async function deleteExpense(expenseId) {
+
+        const response = await fetch('/api/expense/' + expenseId, { method: 'DELETE' })
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || 'Something went wrong!');
+        }
+        const copyExpenses = [...expenses]
+        const index = copyExpenses.findIndex((expense) => expense._id === expenseId)
+        copyExpenses.splice(index, 1)
+
+        setExpenses(copyExpenses)
+
+        return data;
+    }
+
 
     return (
         <div className={classes.GroupPage}>
             <h3>{group.name}</h3>
             <Add className={classes.addBtn} content={'EXPENSE'} formHandle={handleExpenseForm} />
+
             {expenseFormState && <ExpenseForm
                 groupId={groupId}
                 userId={userId}
@@ -55,12 +72,16 @@ export default function GroupPage(props) {
                 setExpenses={setExpenses}
                 expenses={expenses}
             />}
-            {expenses.map(expense => {
-                return <ExpenseCard
-                    key={expense._id}
-                    expense={expense}
-                />
-            })}
+            <div className={classes.expenseContainer}>
+                {expenses.map(expense => {
+                    return <ExpenseCard
+                        key={expense._id}
+                        expense={expense}
+                        deleteExpense={deleteExpense}
+                    />
+                })}
+            </div>
+
         </div>
     )
 }

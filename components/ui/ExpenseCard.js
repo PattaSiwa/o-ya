@@ -6,28 +6,31 @@ export default function ExpenseCard(props) {
     const [confirmDeleteState, setConfirmDeleteState] = useState(false)
     const [expenseData, setExpenseData] = useState(props.expense)
 
-    console.log(expenseData)
-
     function handleConfirmDelete() {
         setConfirmDeleteState(!confirmDeleteState)
     }
     return (
         <div className={classes.expenseCard}>
             <div className={classes.info}>
-                <div className={classes.datails}>
-                    <p>By {expenseData.email}</p>
-                    <p>Description: {expenseData.description}</p>
-                </div>
                 <div className={classes.amountSide}>
-                    <p>Amount: ${expenseData.amount}</p>
+                    <p><strong>Amount:</strong> <span>${expenseData.amount}</span></p>
                 </div>
+                <div className={classes.datails}>
+                    <p><strong>Date:</strong> <span>{expenseData.date}</span></p>
+                    <p><strong>Description:</strong> {expenseData.description}</p>
+                    <p className={classes.email}><strong>{expenseData.email}</strong></p>
+                </div>
+
             </div>
-            <button onClick={setConfirmDeleteState}>DELETE</button>
+            <button className={classes.deleteBtn} onClick={setConfirmDeleteState}>DELETE</button>
 
             {confirmDeleteState &&
                 <ConfirmDelete
                     message={"Are you sure you want to delete this expense?"}
-                    close={handleConfirmDelete} />}
+                    close={handleConfirmDelete}
+                    delete={props.deleteExpense}
+                    expenseId={expenseData._id}
+                />}
         </div>
     )
 }

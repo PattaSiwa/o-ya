@@ -51,12 +51,13 @@
     border: none;
     padding: .5rem;
     transition: .3s;
+    margin: 0 .2rem;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
 }
 
 .deleteBtn {
-    background-color: var(--primary);
+    background-color: var(--danger);
     color: whitesmoke;
 }
 

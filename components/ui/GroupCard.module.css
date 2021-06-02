@@ -3,13 +3,17 @@
     min-width: 320px;
     max-width: 400px;
     height: auto;
-    background-color: rgb(214, 177, 133);
+    background-color: var(--accent);
     margin: 1rem 0;
     overflow: hidden;
     padding: 1rem;
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
 }
 
 .card h3 {
@@ -23,20 +27,23 @@
 .card button {
     font-family: 'Roboto', sans-serif;
     border: none;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    -webkit-box-shadow: 3px 2px 15px -3px #000000; 
+    box-shadow: 3px 2px 15px -3px #000000;
+    color: var(--primary)
+    
 }
 
 .addMember{
     width: 100%;
     margin:auto;
-    height: auto;
-    min-height: 2.5rem;
+    min-height: 2rem;
+    font-size: .8em;
+    margin-top: .5rem;
     padding: .2rem;
     display: block;
     border: none;
     background-color: var(--light);
-    font-size: 1em;
+  
     color:var(--secondary);
     transition: .3s;
 }
@@ -61,22 +68,23 @@
     padding: .7rem;
     font-size: .8em;
     margin: .2rem;
-    width: 28%;
+    width: 100%;
     transition: .3s;
     
 }
 
 .btnContainer button:hover{
-    transform:scale(1.1)
+    transform:scale(1.05)
 }
 
 .btnContainer {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     width: 100%;
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    left:0;
+    left:0; */
     padding-bottom: 1rem;
 }
 
@@ -84,9 +92,9 @@
     /* background-color: var(--); */
     padding: .5rem 1rem;
     margin-top: .5rem;
-    margin-bottom: 4rem;
-    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+    margin-bottom: 1rem;
+    /* -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); */
 }
 
 .viewBtn {
@@ -95,7 +103,7 @@
 }
 
 .deleteBtn {
-    background-color: var(--primary);
+    background-color: var(--danger);
 }
 
 .editBtn {

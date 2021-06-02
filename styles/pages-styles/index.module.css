@@ -18,7 +18,7 @@
 }
 
 .slogan h3 {
-    color: var(--secondary);
+    color: rgb(197, 131, 8);
     font-size: 3em;
     text-shadow: 3px 3px 3px #4b4232;
     font-family: 'Lobster', cursive;
@@ -38,9 +38,10 @@
 
 .getstarted {
     border: none;
-    background-color: var(--secondary);
+    background-color: rgb(197, 131, 8);
     color: var(--primary);
     font-family: 'Oleo Script', cursive;
+    margin-top: 2rem;
     padding: .5rem 1rem;
     font-size: 1.5em;
     border-radius: 30px;

@@ -1,5 +1,5 @@
 header{
-    background:var(--light);
+    background:var(--secondary);
     text-align: right;
     position: fixed;
     z-index: 100;
@@ -19,7 +19,7 @@ nav {
     text-align: left;
     top: 100%;
     left: 0;
-    background: var(--light);
+    background: var(--secondary);
     width: 100%;
     transform: scale(1,0);
     transform-origin: top;
@@ -39,7 +39,7 @@ nav li {
 }
 
 nav a {
-    color: var(--secondary);
+    color: var(--shadow);
     font-size: 1.2em;
     text-transform: uppercase;
     text-decoration: none;

@@ -5,7 +5,13 @@ import classes from './ConfirmDelete.module.css'
 export default function ConfirmDelete(props) {
 
     function handleDelete() {
-        props.delete(props.memberEmail)
+        if (props.memberEmail) {
+            props.delete(props.memberEmail)
+        }
+
+        if (props.expenseId) {
+            props.delete(props.expenseId)
+        }
         props.close()
     }
 

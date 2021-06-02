@@ -28,6 +28,7 @@
 
 
 .searchStatus{
+    margin-top: 1rem;
     display: block;
     font-size: .8em;
     color: var(--primary);
@@ -51,7 +52,7 @@
 
 .title, .input label {
     font-family: 'Lobster', cursive;
-    margin-top: .3rem;
+    margin-top: 1rem;
     color: var(--primary)
 }
 
@@ -97,7 +98,7 @@
     padding: .5rem;
     margin: .5rem 0;
     border: none;
-    font-size: 1em;
+    font-size: .8em;
     color: var(--primary);
     font-family: 'Oleo Script', cursive;
     background-color: var(--shadow);

@@ -18,6 +18,7 @@
 }
 
 .signupStatus{
+    margin-top: 1rem;
     display: block;
     font-size: .7em;
     color: var(--primary);
