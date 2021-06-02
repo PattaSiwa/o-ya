@@ -108,6 +108,7 @@ export default function GroupPage(props) {
                         key={expense._id}
                         expense={expense}
                         userId={userId}
+                        groupOwner={group.owner}
                         deleteExpense={deleteExpense}
                     />
                 })}

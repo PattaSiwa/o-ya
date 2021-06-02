@@ -80,7 +80,7 @@ export default function ExpenseForm(props) {
                             required
                             ref={amountInputRef}
                             min='0.00'
-                            max='10000'
+                            max='100000'
                             step='0.01'
                         />
                         <label htmlFor="date">Date</label>

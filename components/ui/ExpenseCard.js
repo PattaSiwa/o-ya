@@ -1,6 +1,7 @@
 import classes from './ExpenseCard.module.css'
 import ConfirmDelete from '../input/ConfirmDelete'
 import { useState } from 'react'
+import GroupCard from './GroupCard'
 
 export default function ExpenseCard(props) {
     const [confirmDeleteState, setConfirmDeleteState] = useState(false)
@@ -22,7 +23,7 @@ export default function ExpenseCard(props) {
                 </div>
 
             </div>
-            {expenseData.owner === props.userId && <button className={classes.deleteBtn} onClick={setConfirmDeleteState}>DELETE</button>}
+            {(expenseData.owner === props.userId || props.groupOwner === props.userId) && <button className={classes.deleteBtn} onClick={setConfirmDeleteState}>DELETE</button>}
 
             {confirmDeleteState &&
                 <ConfirmDelete
