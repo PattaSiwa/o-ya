@@ -1,10 +1,27 @@
-
+import { motion } from 'framer-motion'
 import classes from '../styles/pages-styles/index.module.css'
 import Link from 'next/link'
 
+
+
 export default function Home() {
   return (
-    <div className={classes.container}>
+    <motion.div className={classes.container} initial="hidden" animate="visible"
+      variants={{
+        hidden: {
+          scale: 4,
+          opacity: 0
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: .3,
+            duration: 1
+          }
+        }
+      }}
+    >
 
 
       {/* <video className={classes.backgroundvid} src="/background1.mp4" muted loop autoPlay ></video> */}
@@ -21,6 +38,6 @@ export default function Home() {
 
 
 
-    </div>
+    </motion.div>
   )
 }

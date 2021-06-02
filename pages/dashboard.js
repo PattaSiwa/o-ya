@@ -5,6 +5,7 @@ import Add from '../components/ui/Add'
 import GroupForm from '../components/input/GroupForm'
 import useSWR from 'swr'
 import GroupCard from '../components/ui/GroupCard'
+import { motion } from 'framer-motion'
 
 
 export default function Dashboard(props) {
@@ -42,9 +43,47 @@ export default function Dashboard(props) {
 
     return (
         <div className={classes.Dashboard}>
-            <Add content={'GROUP'} formHandle={handleGroupForm} />
+            <motion.div initial="hidden" animate="visible" className={classes.addContainer}
+                variants={{
+                    hidden: {
+                        transition: {
+                            duration: 1
+                        },
+                        opacity: 0,
+                        translateX: -200
+                    },
+                    visible: {
+                        scale: 1,
+                        opacity: 1,
+                        translateX: 0,
+                        transition: {
+                            delay: .4,
+                            duration: 1.5
+                        }
+                    }
+                }}>
+                <Add content={'GROUP'} formHandle={handleGroupForm} />
+            </motion.div>
             {groupFormDisplay && <GroupForm userId={userId} handleForm={handleGroupForm} />}
-            <div className={classes.cardContainer}>
+            <motion.div className={classes.cardContainer} initial="hidden" animate="visible"
+                variants={{
+                    hidden: {
+                        transition: {
+                            duration: 1
+                        },
+                        opacity: 0,
+                        translateX: 200
+                    },
+                    visible: {
+                        scale: 1,
+                        opacity: 1,
+                        translateX: 0,
+                        transition: {
+                            delay: .4,
+                            duration: 1.5
+                        }
+                    }
+                }}>
                 {groups.map(group => {
                     return <GroupCard
                         key={group._id}
@@ -67,7 +106,7 @@ export default function Dashboard(props) {
                         name={group.name}
                     />
                 })}
-            </div>
+            </motion.div>
 
         </div>
     )

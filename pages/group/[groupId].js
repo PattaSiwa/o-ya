@@ -6,6 +6,7 @@ import Add from '../../components/ui/Add'
 import { useState, useEffect } from 'react'
 import ExpenseForm from '../../components/input/ExpenseForm'
 import ExpenseCard from '../../components/ui/ExpenseCard'
+import { motion } from 'framer-motion'
 
 export default function GroupPage(props) {
     const router = useRouter()
@@ -58,11 +59,16 @@ export default function GroupPage(props) {
         return data;
     }
 
+    const addStyle = {
+        margin: "1rem 0"
+    }
 
     return (
         <div className={classes.GroupPage}>
-            <h3>{group.name}</h3>
-            <Add className={classes.addBtn} content={'EXPENSE'} formHandle={handleExpenseForm} />
+            <div className={classes.header}>
+                <h3>{group.name}</h3>
+                <Add style={addStyle} content={'EXPENSE'} formHandle={handleExpenseForm} />
+            </div>
 
             {expenseFormState && <ExpenseForm
                 groupId={groupId}
@@ -72,7 +78,21 @@ export default function GroupPage(props) {
                 setExpenses={setExpenses}
                 expenses={expenses}
             />}
-            <div className={classes.expenseContainer}>
+            <motion.div className={classes.expenseContainer} initial="hidden" animate="visible"
+                variants={{
+                    hidden: {
+                        translateY: -200,
+                        opacity: 0
+                    },
+                    visible: {
+                        translateY: 0,
+                        opacity: 1,
+                        transition: {
+                            delay: .3,
+                            duration: 1
+                        }
+                    }
+                }}>
                 {expenses.map(expense => {
                     return <ExpenseCard
                         key={expense._id}
@@ -80,7 +100,7 @@ export default function GroupPage(props) {
                         deleteExpense={deleteExpense}
                     />
                 })}
-            </div>
+            </motion.div>
 
         </div>
     )
