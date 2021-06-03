@@ -63,7 +63,7 @@ a {
 .loading {
   font-family: 'Lobster';
   font-size: 2em;
-  color: var(--danger)
+  color: var(--secondary)
 }
 
 html {

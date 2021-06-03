@@ -28,7 +28,7 @@ export default function TotalDisplay(props) {
     groupTotal = groupTotal.toFixed(2)
     const groupTotalComma = numberWithCommas(groupTotal)
 
-    console.log(props.allMembers)
+    // console.log(props.allMembers)
 
     //get individuals
     const individuals = props.allMembers
@@ -71,7 +71,7 @@ export default function TotalDisplay(props) {
         totalIndividual.push(total)
     }
 
-    console.log(totalIndividual)
+    // console.log(totalIndividual)
 
     //create array of object that has email and total for display
 
@@ -85,7 +85,7 @@ export default function TotalDisplay(props) {
         totalIndividualWithEmail.push(personObject)
     }
 
-    console.log(totalIndividualWithEmail)
+    // console.log(totalIndividualWithEmail)
 
     ///// PAYOUT CALCULATION //////
 
@@ -100,7 +100,7 @@ export default function TotalDisplay(props) {
         individualDifference.push(personObject)
     }
 
-    console.log(individualDifference)
+    // console.log(individualDifference)
 
 
 
@@ -151,8 +151,13 @@ export default function TotalDisplay(props) {
                 }}>
                 <h4>Payout</h4>
                 {individualDifference.map(person => {
-                    return <p><strong>{person.email}</strong><span className={person.difference <= 0 ? 'positive' : 'negative'}>$ {Math.abs(person.difference)} </span></p>
+                    return <p ><strong>{person.email}</strong><span className={person.difference <= 0 ? 'positive' : 'negative'} >$ {Math.abs(person.difference)} </span></p>
                 })}
+                <div className={classes.rubric}>
+                    <em className='positive'>RECEIVE</em>
+                    <em className='negative'>PAY</em>
+                </div>
+
             </motion.div>
         </div>
 
