@@ -28,9 +28,10 @@ export default function TotalDisplay(props) {
     groupTotal = groupTotal.toFixed(2)
     const groupTotalComma = numberWithCommas(groupTotal)
 
+    console.log(props.allMembers)
 
     //get individuals
-    const individuals = []
+    const individuals = props.allMembers
 
     for (let expense of expenseParsed) {
         if (!individuals.includes(expense.email)) {
@@ -40,7 +41,11 @@ export default function TotalDisplay(props) {
     const numOfMember = individuals.length
 
     //Averge per person
-    const avgPerPerson = (groupTotal / numOfMember).toFixed(2)
+    let avgPerPerson = '0.00'
+    if (groupTotal && numOfMember) {
+        avgPerPerson = (groupTotal / numOfMember).toFixed(2)
+    }
+
     const avgComma = numberWithCommas(avgPerPerson)
 
 

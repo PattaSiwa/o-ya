@@ -40,11 +40,21 @@ export default function GroupPage(props) {
     const { data: groupData, error: groupError } = useSWR('/api/group/' + groupId)
     const [group, setGroupData] = useState([])
 
+    const allMembers = []
     useEffect(() => {
         if (groupData) {
+
             setGroupData(groupData.data)
         }
     }, [groupData])
+
+    allMembers.push(groupData.data.email)
+    for (let member of groupData.data.members) {
+        const emailOfMem = member.email
+        allMembers.push(emailOfMem)
+    }
+
+
 
     async function deleteExpense(expenseId) {
 
@@ -84,6 +94,7 @@ export default function GroupPage(props) {
             </motion.div>
             <TotalDisplay
                 expenses={expenses}
+                allMembers={allMembers}
             />
 
             {expenseFormState && <ExpenseForm
