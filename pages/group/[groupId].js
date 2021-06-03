@@ -40,20 +40,28 @@ export default function GroupPage(props) {
     const { data: groupData, error: groupError } = useSWR('/api/group/' + groupId)
     const [group, setGroupData] = useState([])
 
-    const allMembers = []
+    console.log(groupData)
+    const [allMembers, setAllMembers] = useState([])
+
     useEffect(() => {
         if (groupData) {
-
             setGroupData(groupData.data)
         }
     }, [groupData])
 
-    allMembers.push(groupData.data.email)
-    for (let member of groupData.data.members) {
-        const emailOfMem = member.email
-        allMembers.push(emailOfMem)
-    }
 
+    useEffect(() => {
+        if (groupData) {
+            const membersTemp = []
+            membersTemp.push(groupData.data.email)
+            for (let member of groupData.data.members) {
+                const emailOfMem = member.email
+                membersTemp.push(emailOfMem)
+            }
+
+            setAllMembers(membersTemp)
+        }
+    }, [groupData])
 
 
     async function deleteExpense(expenseId) {

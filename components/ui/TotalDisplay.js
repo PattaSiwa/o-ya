@@ -71,6 +71,8 @@ export default function TotalDisplay(props) {
         totalIndividual.push(total)
     }
 
+    console.log(totalIndividual)
+
     //create array of object that has email and total for display
 
     const totalIndividualWithEmail = []
@@ -132,7 +134,21 @@ export default function TotalDisplay(props) {
                 </div>
             </motion.div>
 
-            <motion.div className={classes.payout}>
+            <motion.div className={classes.payout} initial="hidden" animate="visible"
+                variants={{
+                    hidden: {
+                        translateY: 300,
+                        opacity: 0,
+                    },
+                    visible: {
+                        translateY: 0,
+                        opacity: 1,
+                        transition: {
+                            delay: .3,
+                            duration: 1
+                        }
+                    }
+                }}>
                 <h3>Payout</h3>
                 {individualDifference.map(person => {
                     return <p><strong>{person.email}</strong><span className={person.difference <= 0 ? 'positive' : 'negative'}>$ {Math.abs(person.difference)} </span></p>

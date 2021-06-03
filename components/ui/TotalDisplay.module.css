@@ -68,5 +68,8 @@
         width: 40%;
         margin-top: 2rem;
     }
+    .totalDisplay h3 , .payout h3{
+        font-size: 1.6em;
+    }
 }
     
