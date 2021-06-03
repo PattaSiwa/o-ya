@@ -44,6 +44,14 @@ a {
 
 }
 
+.positive {
+  color: green
+}
+
+.negative {
+  color: var(--danger)
+}
+
 
 html {
   box-sizing: border-box;

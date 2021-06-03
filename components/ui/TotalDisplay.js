@@ -25,6 +25,7 @@ export default function TotalDisplay(props) {
     for (const expense of expenseParsed) {
         groupTotal += expense.amount
     }
+    groupTotal = groupTotal.toFixed(2)
     const groupTotalComma = numberWithCommas(groupTotal)
 
 
@@ -41,6 +42,8 @@ export default function TotalDisplay(props) {
     //Averge per person
     const avgPerPerson = (groupTotal / numOfMember).toFixed(2)
     const avgComma = numberWithCommas(avgPerPerson)
+
+
 
     //Separate expenses by email into their own arrays
     const individualExpenses = []
@@ -77,37 +80,60 @@ export default function TotalDisplay(props) {
 
     console.log(totalIndividualWithEmail)
 
+    ///// PAYOUT CALCULATION //////
 
+    const individualDifference = []
+
+    for (let i = 0; i < individuals.length; i++) {
+        const personObject = {
+            email: individuals[i],
+            difference: parseFloat((avgPerPerson - totalIndividual[i]).toFixed(2))
+
+        }
+        individualDifference.push(personObject)
+    }
+
+    console.log(individualDifference)
 
 
 
     return (
-        <motion.div className={classes.totalDisplay} initial="hidden" animate="visible"
-            variants={{
-                hidden: {
-                    translateY: -300,
-                    opacity: 0,
-                },
-                visible: {
-                    translateY: 0,
-                    opacity: 1,
-                    transition: {
-                        delay: .3,
-                        duration: 1
+        <div className={classes.container}>
+            <motion.div className={classes.totalDisplay} initial="hidden" animate="visible"
+                variants={{
+                    hidden: {
+                        translateY: -300,
+                        opacity: 0,
+                    },
+                    visible: {
+                        translateY: 0,
+                        opacity: 1,
+                        transition: {
+                            delay: .3,
+                            duration: 1
+                        }
                     }
-                }
-            }}>
-            <h3>TOTAL</h3>
-            <div className={classes.groupTotal}>
-                <p><strong>Group</strong><span>$ {groupTotalComma}</span></p>
-                <p><strong>Avg Per Person</strong><span>$ {avgComma}</span></p>
-            </div>
+                }}>
+                <h3>TOTAL</h3>
+                <div className={classes.groupTotal}>
+                    <p><strong>Group</strong><span>$ {groupTotalComma}</span></p>
+                    <p><strong>Avg Per Person</strong><span>$ {avgComma}</span></p>
+                </div>
 
-            <div className={classes.individualTotal}>
-                {totalIndividualWithEmail.map(person => {
-                    return <p><strong>{person.email}</strong><span>$ {person.total}</span></p>
+                <div className={classes.individualTotal}>
+                    {totalIndividualWithEmail.map(person => {
+                        return <p><strong>{person.email}</strong><span>$ {person.total}</span></p>
+                    })}
+                </div>
+            </motion.div>
+
+            <motion.div className={classes.payout}>
+                <h3>Payout</h3>
+                {individualDifference.map(person => {
+                    return <p><strong>{person.email}</strong><span className={person.difference <= 0 ? 'positive' : 'negative'}>$ {Math.abs(person.difference)} </span></p>
                 })}
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
+
     )
 }
