@@ -42,7 +42,7 @@ export default function Dashboard(props) {
 
     return (
         <div className={classes.Dashboard}>
-            <motion.div initial="hidden" animate="visible" className={classes.addContainer}
+            <motion.div className={classes.addContainer} initial="hidden" animate="visible"
                 variants={{
                     hidden: {
                         transition: {

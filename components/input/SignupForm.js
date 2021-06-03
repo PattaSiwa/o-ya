@@ -2,6 +2,7 @@ import classes from './SignupForm.module.css'
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/client';
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 async function createUser(email, password) {
@@ -69,7 +70,24 @@ function SignUpForm() {
     }
 
     return (
-        <form className={classes.form} onSubmit={submitHandler}>
+        <motion.form className={classes.form} onSubmit={submitHandler} initial="hidden" animate="visible"
+            variants={{
+                hidden: {
+                    transition: {
+                        duration: 1
+                    },
+                    opacity: 0,
+                    scale: 0
+                },
+                visible: {
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                        delay: .5,
+                        duration: 1
+                    }
+                }
+            }}>
             <h2 className={classes.title}>Sign Up</h2>
             <div className={classes.input}>
                 <label htmlFor='email'>Your Email</label>
@@ -108,7 +126,7 @@ function SignUpForm() {
             <Link href='/login'>
                 <a className={classes.signupLink}>Login with existing account here</a>
             </Link>
-        </form>
+        </motion.form>
     )
 }
 

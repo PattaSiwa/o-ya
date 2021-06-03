@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect } from 'react'
 import classes from './GroupCard.module.css'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 import useSWR from 'swr'
 import { useRouter } from 'next/router'
 import EditGroupForm from '../input/EditGroupForm';
@@ -124,7 +125,24 @@ export default function GroupCard(props) {
 
     return (
         <Fragment>
-            <div className={classes.card}>
+            <motion.div className={classes.card} initial="hidden" animate="visible"
+                variants={{
+                    hidden: {
+                        transition: {
+                            duration: 1
+                        },
+                        opacity: 0,
+                        scale: 0
+                    },
+                    visible: {
+                        opacity: 1,
+                        scale: 1,
+                        transition: {
+                            delay: 1,
+                            duration: 1.5
+                        }
+                    }
+                }}>
                 <h3>{props.name}</h3>
                 {props.owner === props.user && <button
                     className={classes.addMember}
@@ -161,7 +179,7 @@ export default function GroupCard(props) {
                     />}
 
                 {editFormState && <EditGroupForm handleForm={handleEditForm} name={props.name} id={props.id} groupsList={props.groupsList} setGroups={props.setGroups} />}
-            </div>
+            </motion.div>
         </Fragment>
 
     )

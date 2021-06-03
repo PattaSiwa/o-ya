@@ -2,6 +2,7 @@ import classes from './LoginForm.module.css'
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { signIn } from 'next-auth/client';
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 
@@ -39,7 +40,24 @@ export default function LoginForm(props) {
 
     }
     return (
-        <form className={classes.form} onSubmit={submitHandler}>
+        <motion.form className={classes.form} onSubmit={submitHandler} initial="hidden" animate="visible"
+            variants={{
+                hidden: {
+                    transition: {
+                        duration: 1
+                    },
+                    opacity: 0,
+                    scale: 3
+                },
+                visible: {
+                    opacity: 1,
+                    scale: 1,
+                    transition: {
+                        delay: .5,
+                        duration: 1
+                    }
+                }
+            }}>
             <h2 className={classes.title}>Login</h2>
             <div className={classes.input}>
                 <label htmlFor='email'>Your Email</label>
@@ -69,6 +87,6 @@ export default function LoginForm(props) {
                     <a className={classes.signupLink}>Don't have an account? Sign up here</a>
                 </Link>
             </div>
-        </form>
+        </motion.form>
     )
 }
