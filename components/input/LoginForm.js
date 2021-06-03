@@ -47,7 +47,7 @@ export default function LoginForm(props) {
                         duration: 1
                     },
                     opacity: 0,
-                    scale: 3
+                    scale: 0
                 },
                 visible: {
                     opacity: 1,

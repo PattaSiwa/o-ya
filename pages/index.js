@@ -9,14 +9,14 @@ export default function Home() {
     <motion.div className={classes.container} initial="hidden" animate="visible"
       variants={{
         hidden: {
-          scale: 4,
+          scale: 0,
           opacity: 0
         },
         visible: {
           scale: 1,
           opacity: 1,
           transition: {
-            delay: .3,
+            delay: .5,
             duration: 1
           }
         }
