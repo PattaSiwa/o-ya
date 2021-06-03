@@ -19,7 +19,10 @@ export default function SignupPage() {
     }, [router])
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <div className='loadingPage'>
+            <p className='loading'>Loading...</p>
+
+        </div>
     }
 
     return (

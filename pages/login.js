@@ -18,7 +18,11 @@ export default function LoginPage() {
     }, [router])
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return <div className='loadingPage'>
+
+            <h2 className='loading'>Loading...</h2>
+
+        </div>
     }
 
     return (

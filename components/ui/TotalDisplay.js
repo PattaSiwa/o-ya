@@ -121,7 +121,7 @@ export default function TotalDisplay(props) {
                         }
                     }
                 }}>
-                <h3>TOTAL</h3>
+                <h4>TOTAL</h4>
                 <div className={classes.groupTotal}>
                     <p><strong>Group</strong><span>$ {groupTotalComma}</span></p>
                     <p><strong>Avg Per Person</strong><span>$ {avgComma}</span></p>
@@ -149,7 +149,7 @@ export default function TotalDisplay(props) {
                         }
                     }
                 }}>
-                <h3>Payout</h3>
+                <h4>Payout</h4>
                 {individualDifference.map(person => {
                     return <p><strong>{person.email}</strong><span className={person.difference <= 0 ? 'positive' : 'negative'}>$ {Math.abs(person.difference)} </span></p>
                 })}

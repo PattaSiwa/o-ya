@@ -53,6 +53,19 @@ a {
 }
 
 
+.loadingPage {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  font-family: 'Lobster';
+  font-size: 2em;
+  color: var(--danger)
+}
+
 html {
   box-sizing: border-box;
 }
