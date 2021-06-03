@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## O-Ya
 
-## Getting Started
 
-First, run the development server:
+    Dealing with money is never a fun thing especially with the people you live with. O-Ya is a budgeting application that helps people track their shared expenses. It allows each user log their expenses. Who paid for the electric? Who paid for internet? Who bought the White Claws? Then calculate everyone’s total and payouts to keep things fair and simple. 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### User Story
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+    • User can create an account 
+    • User can create a group
+    • User can edit name/delete group that they created
+    • User can add/remove other users(member) to the group they created 
+    • User can add expense in group they are a member of
+    • User can edit/delete expense they created
+    • User can view total expense of everyone in their group
+    • User can view total payout of everyone in their group
+    
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## DATA MODEL
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### GROUP – Owner one(user) to many (group) , Members Many(groups) to Many(Users) // Expense One(Group) to many(expenses) 
+        ◦ Name - String
+        ◦ Owner – User ID
+        ◦ Members – Array [User IDs] Owner User ID will be first member
+        ◦ Expenses – Arrays [Expense IDs]
+        ◦ Group ID - Auto generated
 
-## Learn More
+### USER – Owner to Group/Expense One to many. Member to Group is many to many 
+        ◦ Username – String
+        ◦ Email – String 
+        ◦ Password - String
+        ◦ User ID - Auto generated
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### EXPENSE – Owner One(user) to many(expenses)
+        ◦ Amount – Number with 2 decimal points 99.99 
+        ◦ Date – Date String
+        ◦ Description - String
+        ◦ Owner – User ID
+        ◦ Group – Group ID
+        ◦ Expense ID - Auto generated
