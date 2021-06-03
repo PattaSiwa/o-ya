@@ -78,9 +78,9 @@ export default function LoginForm(props) {
                     placeholder="password"
                 />
             </div>
-            <div>
+            <div >
                 <p className={classes.loginStatus}>{loginStatus}</p>
-            </div>
+            </div >
             <div className={classes.actions}>
                 <button>Login</button>
                 <Link href='/signup'>

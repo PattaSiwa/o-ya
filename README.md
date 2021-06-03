@@ -1,8 +1,20 @@
 ## O-Ya
 
 
-    Dealing with money is never a fun thing especially with the people you live with. O-Ya is a budgeting application that helps people track their shared expenses. It allows each user log their expenses. Who paid for the electric? Who paid for internet? Who bought the White Claws? Then calculate everyone’s total and payouts to keep things fair and simple. 
+    Dealing with money is never a fun thing especially with the people you live with. 
+    O-Ya is a budgeting application that helps people track their shared expenses. 
+    It allows each user log their expenses. 
 
+    Who paid for the electric? 
+    Who paid for internet? 
+    Who bought the White Claws? 
+    
+    Then calculate everyone’s total and payouts to keep things fair and simple. 
+
+
+### VISIT THE SITE HERE
+
+    https://o-ya-oy6t1d8xn-pattasiwa.vercel.app/
 
 ### User Story
 
@@ -14,7 +26,7 @@
     • User can edit/delete expense they created
     • User can view total expense of everyone in their group
     • User can view total payout of everyone in their group
-    
+
 
 ## DATA MODEL
 
