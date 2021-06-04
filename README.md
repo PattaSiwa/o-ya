@@ -14,7 +14,7 @@
 
 ### VISIT THE SITE HERE
 
-    https://o-ya-oy6t1d8xn-pattasiwa.vercel.app/
+    https://oya.money
 
 ### User Story
 
@@ -30,23 +30,27 @@
 
 ## DATA MODEL
 
-### GROUP – Owner one(user) to many (group) , Members Many(groups) to Many(Users) // Expense One(Group) to many(expenses) 
+#### GROUP – Owner one(user) to many (group) , Members Many(groups) to Many(Users) // Expense One(Group) to many(expenses) 
         ◦ Name - String
         ◦ Owner – User ID
         ◦ Members – Array [User IDs] Owner User ID will be first member
         ◦ Expenses – Arrays [Expense IDs]
         ◦ Group ID - Auto generated
 
-### USER – Owner to Group/Expense One to many. Member to Group is many to many 
+#### USER – Owner to Group/Expense One to many. Member to Group is many to many 
         ◦ Username – String
         ◦ Email – String 
         ◦ Password - String
         ◦ User ID - Auto generated
 
-### EXPENSE – Owner One(user) to many(expenses)
+#### EXPENSE – Owner One(user) to many(expenses)
         ◦ Amount – Number with 2 decimal points 99.99 
         ◦ Date – Date String
         ◦ Description - String
         ◦ Owner – User ID
         ◦ Group – Group ID
         ◦ Expense ID - Auto generated
+
+### WireFrame
+
+![OYA original wireframe](./public/oya.jpg)

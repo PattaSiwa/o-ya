@@ -33,11 +33,11 @@ export default function TotalDisplay(props) {
     //get individuals
     const individuals = props.allMembers
 
-    for (let expense of expenseParsed) {
-        if (!individuals.includes(expense.email)) {
-            individuals.push(expense.email)
-        }
-    }
+    // for (let expense of expenseParsed) {
+    //     if (!individuals.includes(expense.email)) {
+    //         individuals.push(expense.email)
+    //     }
+    // }
     const numOfMember = individuals.length
 
     //Averge per person
