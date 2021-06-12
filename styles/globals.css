@@ -66,6 +66,13 @@ a {
   color: var(--secondary)
 }
 
+.centerDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh
+}
+
 html {
   box-sizing: border-box;
 }
