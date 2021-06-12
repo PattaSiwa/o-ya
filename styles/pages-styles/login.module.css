@@ -1,13 +1,22 @@
 .login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.logintext{
-    color: var(--shadow);
-    font-size: 4em;
-
+.logintext {
+  color: var(--shadow);
+  font-size: 4em;
 }
 
+.loginArt {
+  width: 30%;
+  margin-left: 2rem;
+}
+
+@media screen and (max-width: 800px) {
+  .loginArt {
+    display: none;
+  }
+}

@@ -1,12 +1,22 @@
 .signup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.signuptext{
-    color: var(--shadow);
-    font-size: 4em;
+.signuptext {
+  color: var(--shadow);
+  font-size: 4em;
+}
 
+.signupArt {
+  width: 30%;
+  margin-right: 4rem;
+}
+
+@media screen and (max-width: 800px) {
+  .signupArt {
+    display: none;
+  }
 }
