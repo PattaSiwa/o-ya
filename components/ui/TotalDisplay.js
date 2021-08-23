@@ -84,6 +84,10 @@ export default function TotalDisplay(props) {
 
   const individualDifference = [];
 
+  const avgTotal = avgPerPerson * numOfMember;
+  const differenceTotal = (groupTotal - avgTotal).toFixed(2);
+  console.log(differenceTotal);
+
   for (let i = 0; i < individuals.length; i++) {
     const personObject = {
       email: individuals[i],
